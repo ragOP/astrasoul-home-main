@@ -1,11 +1,21 @@
-import React from 'react';
-import { User, Mail, Phone, Calendar, MapPin, Venus, Clock } from 'lucide-react';
+import React from "react";
+// import { User, Mail, Phone, Calendar, MapPin, Female, Clock } from "lucide-react";
+import {
+  User,
+  Mail,
+  Phone,
+  Calendar,
+  MapPin,
+  Users,
+  Clock
+} from "lucide-react";
+
 
 const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
   const handleInputChange = (field, value) => {
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [field]: value
+      [field]: value,
     }));
   };
 
@@ -20,21 +30,24 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
         </p>
       </div>
 
-      <form onSubmit={(e) => {
-        e.preventDefault();
-        onSubmit(formData);
-      }} className="space-y-4">
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          onSubmit(formData);
+        }}
+        className="space-y-4"
+      >
         <div className="grid md:grid-cols-2 gap-4">
           {/* Name */}
           <div>
             <label className="block text-sm font-medium text-gray-700 love-font-poppins mb-2">
-              <User className="w-4 h-4 inline mr-2 text-rose-500" />
+              <Users className="w-4 h-4 inline mr-2 text-rose-500" />
               Full Name *
             </label>
             <input
               type="text"
-              value={formData.name}
-              onChange={(e) => handleInputChange('name', e.target.value)}
+              value={formData.name || ""}
+              onChange={(e) => handleInputChange("name", e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
               placeholder="Enter your full name"
               required
@@ -49,8 +62,8 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
             </label>
             <input
               type="email"
-              value={formData.email}
-              onChange={(e) => handleInputChange('email', e.target.value)}
+              value={formData.email || ""}
+              onChange={(e) => handleInputChange("email", e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
               placeholder="Enter your email"
               required
@@ -65,8 +78,8 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
             </label>
             <input
               type="tel"
-              value={formData.phoneNumber}
-              onChange={(e) => handleInputChange('phoneNumber', e.target.value)}
+              value={formData.phoneNumber || ""}
+              onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
               placeholder="Enter your phone number"
               required
@@ -81,8 +94,8 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
             </label>
             <input
               type="date"
-              value={formData.dateOfBirth}
-              onChange={(e) => handleInputChange('dateOfBirth', e.target.value)}
+              value={formData.dateOfBirth || ""}
+              onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
               required
             />
@@ -96,8 +109,8 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
             </label>
             <input
               type="text"
-              value={formData.placeOfBirth}
-              onChange={(e) => handleInputChange('placeOfBirth', e.target.value)}
+              value={formData.placeOfBirth || ""}
+              onChange={(e) => handleInputChange("placeOfBirth", e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
               placeholder="Enter your birth place"
               required
@@ -107,12 +120,12 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
           {/* Gender */}
           <div>
             <label className="block text-sm font-medium text-gray-700 love-font-poppins mb-2">
-              <Venus className="w-4 h-4 inline mr-2 text-rose-500" />
+              <Female className="w-4 h-4 inline mr-2 text-rose-500" />
               Gender *
             </label>
             <select
-              value={formData.gender}
-              onChange={(e) => handleInputChange('gender', e.target.value)}
+              value={formData.gender || ""}
+              onChange={(e) => handleInputChange("gender", e.target.value)}
               className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
               required
             >
@@ -123,20 +136,6 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
             </select>
           </div>
         </div>
-
-        {/* Preferred Date/Time */}
-        {/* <div>
-          <label className="block text-sm font-medium text-gray-700 love-font-poppins mb-2">
-            <Clock className="w-4 h-4 inline mr-2 text-rose-500" />
-            Preferred Delivery Date/Time
-          </label>
-          <input
-            type="datetime-local"
-            value={formData.preferredDateTime}
-            onChange={(e) => handleInputChange('preferredDateTime', e.target.value)}
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
-          />
-        </div> */}
 
         {/* Note */}
         <div className="text-center pt-4">
@@ -149,4 +148,4 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
   );
 };
 
-export default LoveConsultationForm; 
+export default LoveConsultationForm;
