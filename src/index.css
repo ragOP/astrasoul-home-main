@@ -1,0 +1,220 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap');
+
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  :root {
+    /* AstraSoul Cosmic Palette */
+    --background: 240 30% 6%;
+    --foreground: 45 20% 95%;
+
+    --card: 240 25% 10%;
+    --card-foreground: 45 20% 95%;
+
+    --popover: 240 25% 10%;
+    --popover-foreground: 45 20% 95%;
+
+    --primary: 45 70% 55%;
+    --primary-foreground: 240 30% 6%;
+
+    --secondary: 270 40% 25%;
+    --secondary-foreground: 45 20% 95%;
+
+    --muted: 240 20% 15%;
+    --muted-foreground: 240 10% 60%;
+
+    --accent: 270 50% 40%;
+    --accent-foreground: 45 20% 95%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 45 20% 95%;
+
+    --border: 240 20% 18%;
+    --input: 240 20% 18%;
+    --ring: 45 70% 55%;
+
+    --radius: 0.75rem;
+
+    /* Custom cosmic colors */
+    --cosmic-purple: 270 60% 20%;
+    --cosmic-purple-light: 270 50% 35%;
+    --midnight-blue: 230 50% 12%;
+    --midnight-blue-light: 230 40% 25%;
+    --soft-gold: 45 70% 55%;
+    --soft-gold-light: 45 60% 70%;
+    --starlight: 45 20% 95%;
+    --nebula: 280 60% 30%;
+
+    /* Gradients */
+    --gradient-cosmic: linear-gradient(135deg, hsl(270 60% 15%) 0%, hsl(230 50% 10%) 50%, hsl(240 30% 6%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(45 70% 55%) 0%, hsl(35 60% 50%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(240 25% 12%) 0%, hsl(240 25% 8%) 100%);
+    --gradient-hero: radial-gradient(ellipse at top, hsl(270 50% 20%) 0%, hsl(240 40% 10%) 50%, hsl(240 30% 6%) 100%);
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(45 70% 55% / 0.15);
+    --shadow-card: 0 4px 30px hsl(240 30% 0% / 0.3);
+    --shadow-cosmic: 0 0 60px hsl(270 60% 30% / 0.2);
+
+    /* Sidebar (keeping defaults) */
+    --sidebar-background: 240 30% 8%;
+    --sidebar-foreground: 45 20% 95%;
+    --sidebar-primary: 45 70% 55%;
+    --sidebar-primary-foreground: 240 30% 6%;
+    --sidebar-accent: 270 40% 25%;
+    --sidebar-accent-foreground: 45 20% 95%;
+    --sidebar-border: 240 20% 18%;
+    --sidebar-ring: 45 70% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  .text-gradient-gold {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(135deg, hsl(45 70% 60%) 0%, hsl(35 60% 55%) 100%);
+  }
+
+  .bg-cosmic {
+    background: var(--gradient-cosmic);
+  }
+
+  .bg-hero {
+    background: var(--gradient-hero);
+  }
+
+  .glow-gold {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .glow-cosmic {
+    box-shadow: var(--shadow-cosmic);
+  }
+
+  .card-glass {
+    @apply backdrop-blur-md border border-border/50;
+    background: linear-gradient(180deg, hsl(240 25% 12% / 0.8) 0%, hsl(240 25% 8% / 0.9) 100%);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+  }
+
+  .animate-glow-pulse {
+    animation: glow-pulse 4s ease-in-out infinite;
+  }
+
+  .animate-fade-up {
+    animation: fade-up 0.8s ease-out forwards;
+  }
+
+  .animate-fade-in-slow {
+    animation: fade-in-slow 1.2s ease-out forwards;
+  }
+
+  .delay-100 { animation-delay: 100ms; }
+  .delay-200 { animation-delay: 200ms; }
+  .delay-300 { animation-delay: 300ms; }
+  .delay-400 { animation-delay: 400ms; }
+  .delay-500 { animation-delay: 500ms; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 1; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px hsl(45 70% 55% / 0.2); }
+  50% { box-shadow: 0 0 40px hsl(45 70% 55% / 0.4); }
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fade-in-slow {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Stars background effect */
+.stars-bg {
+  position: relative;
+  overflow: hidden;
+}
+
+.stars-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: 
+    radial-gradient(2px 2px at 20px 30px, hsl(45 20% 80%), transparent),
+    radial-gradient(2px 2px at 40px 70px, hsl(45 20% 90%), transparent),
+    radial-gradient(1px 1px at 90px 40px, hsl(45 20% 85%), transparent),
+    radial-gradient(2px 2px at 130px 80px, hsl(45 20% 75%), transparent),
+    radial-gradient(1px 1px at 160px 120px, hsl(45 20% 90%), transparent),
+    radial-gradient(1px 1px at 200px 50px, hsl(45 20% 80%), transparent),
+    radial-gradient(2px 2px at 250px 150px, hsl(45 20% 85%), transparent),
+    radial-gradient(1px 1px at 300px 100px, hsl(45 20% 70%), transparent);
+  background-repeat: repeat;
+  background-size: 350px 200px;
+  animation: twinkle 4s ease-in-out infinite;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+/* Hide scrollbar utility */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Safe area for sticky bottom elements */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}
