@@ -138,48 +138,7 @@ const TwoYearHoroscopePremium = () => {
           <motion.div className="heroBloom" style={{ opacity: heroGlow }} />
 
           {/* Top “panel” now has content (so it doesn’t look empty) */}
-          <div className="heroTopPanel" aria-hidden="false">
-            <div className="heroTopPanelStars" />
-            <div className="heroPanelInner">
-              <div className="heroPanelHead">
-                <div className="heroPanelTitle">Today’s Snapshot</div>
-                <div className="heroPanelPill">24-month timing</div>
-              </div>
-
-              <div className="heroPanelGrid">
-                <PanelCard
-                  k="Best Window"
-                  v="Next 30–45 days"
-                  hint="Action phase"
-                  icon="✦"
-                />
-                <PanelCard
-                  k="Caution"
-                  v="Short risk phase"
-                  hint="Avoid big moves"
-                  icon="⚠"
-                />
-                <PanelCard
-                  k="Love"
-                  v="Turning point"
-                  hint="Clarity incoming"
-                  icon="♡"
-                />
-                <PanelCard
-                  k="Money"
-                  v="Growth period"
-                  hint="Stabilizing"
-                  icon="₹"
-                />
-              </div>
-
-              <div className="heroPanelFooter">
-                <span className="hpDot" />
-                <span className="hpText">Your report shows exact months + remedies (no generic copy-paste).</span>
-              </div>
-            </div>
-          </div>
-
+      
           {/* bottom curve plate */}
           <div className="heroBottomPlate" aria-hidden="true" />
         </motion.div>
@@ -850,7 +809,7 @@ const css = `
   .hero{
     position:relative; z-index:1;
     padding: 22px 14px 34px;
-    max-width:1120px; margin: 0 auto;
+    max-width:1120px; margin: -40px auto;
   }
   .heroMedia{
     position:absolute; inset:0;
@@ -981,7 +940,7 @@ const css = `
   .heroBottomPlate{
     position:absolute;
     left: 14px; right: 14px;
-    bottom: 18px;
+    bottom: 1px;
     height: 86px;
     border-radius: 28px;
     border: 1px solid rgba(255,255,255,.10);
@@ -991,7 +950,7 @@ const css = `
 
   .heroContent{
     position:relative; z-index:2;
-    padding-top: 18px;
+    padding-top: 0px;
     display:grid;
     grid-template-columns: 1fr;
     gap: 14px;
@@ -999,12 +958,12 @@ const css = `
 
   /* moved UP a bit so hero doesn't feel empty */
   .heroCard{
-    margin-top: 320px;
+    margin-top: 80px;
     background: linear-gradient(180deg, rgba(12,16,34,.78), rgba(10,14,31,.62));
     border: 1px solid rgba(255,255,255,.12);
     border-radius: var(--radius);
     padding: 16px 14px;
-    box-shadow: var(--shadow2);
+  
     backdrop-filter: blur(16px);
   }
 
@@ -1166,7 +1125,7 @@ const css = `
     z-index:1;
     padding: 70px 14px;
     max-width:1120px;
-    margin: 0 auto;
+    margin: -19px auto;
   }
   .sectionDark{
     background:
