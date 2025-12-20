@@ -2,12 +2,11 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
 
 /**
- * ULTRA PREMIUM 2-Year Horoscope Landing (Mobile-first)
+ * ULTRA PREMIUM 2-Year Kundali Landing (Mobile-first)
  * ✅ Full single-file React JSX
- * ✅ Premium theme (dark cosmic + glass + gold accents)
- * ✅ Sticky Header + progress bar
- * ✅ Free internet placeholder images (Unsplash) so you can SEE it
- * ✅ Lots of animations (Framer Motion)
+ * ✅ Form removed ✅ (replaced with Order/WhatsApp section)
+ * ✅ HERO top area now has content (no empty panel)
+ * ✅ Reveal cards centered (pic 2 fix)
  *
  * Install:
  *   npm i framer-motion
@@ -18,12 +17,14 @@ const easeOut = [0.16, 1, 0.3, 1];
 const TwoYearHoroscopePremium = () => {
   const pageRef = useRef(null);
   const { scrollYProgress } = useScroll({ container: undefined });
-  const progress = useSpring(scrollYProgress, { stiffness: 140, damping: 25, mass: 0.35 });
+  const progress = useSpring(scrollYProgress, {
+    stiffness: 140,
+    damping: 25,
+    mass: 0.35,
+  });
 
   const [active, setActive] = useState("home");
 
-  // ---- FREE INTERNET IMAGES (Unsplash) ----
-  // Change the `sig=` numbers to get different images.
   const IMAGES = useMemo(
     () => ({
       hero:
@@ -38,13 +39,22 @@ const TwoYearHoroscopePremium = () => {
         "https://images.unsplash.com/photo-1520975916090-3105956dac38?auto=format&fit=crop&w=1600&q=80",
       constellation:
         "https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1600&q=80",
+
+      // Premium signature pics (replace with your real ones anytime)
+      sig1:
+        "https://images.unsplash.com/photo-1521791055366-0d553872125f?auto=format&fit=crop&w=1600&q=80",
+      sig2:
+        "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?auto=format&fit=crop&w=1600&q=80",
+      sig3:
+        "https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1600&q=80",
+      sig4:
+        "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1600&q=80",
     }),
     []
   );
 
-  // ---- Subtle "active section" detection for header highlight (mobile-friendly) ----
   useEffect(() => {
-    const ids = ["home", "problem", "reveal", "truth", "process", "preview", "form"];
+    const ids = ["home", "problem", "reveal", "signatures", "preview", "order"];
     const elMap = ids
       .map((id) => ({ id, el: document.getElementById(id) }))
       .filter((x) => x.el);
@@ -57,7 +67,7 @@ const TwoYearHoroscopePremium = () => {
       elMap.forEach(({ id, el }) => {
         const rect = el.getBoundingClientRect();
         const top = rect.top + y;
-        const dist = Math.abs(top - y - 140); // header offset
+        const dist = Math.abs(top - y - 140);
         if (dist < bestDist) {
           bestDist = dist;
           best = id;
@@ -72,8 +82,8 @@ const TwoYearHoroscopePremium = () => {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const heroParallaxY = useTransform(scrollYProgress, [0, 0.25], [0, 120]);
-  const heroGlow = useTransform(scrollYProgress, [0, 0.2], [1, 0.6]);
+  const heroParallaxY = useTransform(scrollYProgress, [0, 0.25], [0, 85]);
+  const heroGlow = useTransform(scrollYProgress, [0, 0.2], [1, 0.65]);
 
   return (
     <div ref={pageRef} className="wrap">
@@ -98,15 +108,18 @@ const TwoYearHoroscopePremium = () => {
             <a className={active === "reveal" ? "navLink active" : "navLink"} href="#reveal">
               Inside
             </a>
+            <a className={active === "signatures" ? "navLink active" : "navLink"} href="#signatures">
+              Signatures
+            </a>
             <a className={active === "preview" ? "navLink active" : "navLink"} href="#preview">
               Preview
             </a>
-            <a className={active === "form" ? "navLink active" : "navLink"} href="#form">
+            <a className={active === "order" ? "navLink active" : "navLink"} href="#order">
               Start
             </a>
           </nav>
 
-          <a className="headerCta" href="#form">
+          <a className="headerCta" href="#order">
             Reveal 24 Months
             <span className="headerCtaGlow" />
           </a>
@@ -123,6 +136,52 @@ const TwoYearHoroscopePremium = () => {
           <img className="heroImg" src={IMAGES.hero} alt="Cosmic night sky background" />
           <div className="heroOverlay" />
           <motion.div className="heroBloom" style={{ opacity: heroGlow }} />
+
+          {/* Top “panel” now has content (so it doesn’t look empty) */}
+          <div className="heroTopPanel" aria-hidden="false">
+            <div className="heroTopPanelStars" />
+            <div className="heroPanelInner">
+              <div className="heroPanelHead">
+                <div className="heroPanelTitle">Today’s Snapshot</div>
+                <div className="heroPanelPill">24-month timing</div>
+              </div>
+
+              <div className="heroPanelGrid">
+                <PanelCard
+                  k="Best Window"
+                  v="Next 30–45 days"
+                  hint="Action phase"
+                  icon="✦"
+                />
+                <PanelCard
+                  k="Caution"
+                  v="Short risk phase"
+                  hint="Avoid big moves"
+                  icon="⚠"
+                />
+                <PanelCard
+                  k="Love"
+                  v="Turning point"
+                  hint="Clarity incoming"
+                  icon="♡"
+                />
+                <PanelCard
+                  k="Money"
+                  v="Growth period"
+                  hint="Stabilizing"
+                  icon="₹"
+                />
+              </div>
+
+              <div className="heroPanelFooter">
+                <span className="hpDot" />
+                <span className="hpText">Your report shows exact months + remedies (no generic copy-paste).</span>
+              </div>
+            </div>
+          </div>
+
+          {/* bottom curve plate */}
+          <div className="heroBottomPlate" aria-hidden="true" />
         </motion.div>
 
         <div className="heroContent">
@@ -139,21 +198,18 @@ const TwoYearHoroscopePremium = () => {
             </div>
 
             <h1 className="h1">
-              What if the next <span className="accent">2 years</span> change your life…
+              Your next <span className="accent">24 months</span> —
               <br />
-              and you walk into them <span className="accent2">blind?</span>
+              mapped with <span className="accent2">timing windows.</span>
             </h1>
 
             <p className="sub">
-              Your chart already knows which months bring breakthroughs, heartbreaks, losses, blessings,
-              opportunities, or tests.
-              <br />
-              <b>Do you?</b>
+              Month-by-month phases: when to push, pause, avoid risk, or act — based on your chart timing.
             </p>
 
             <div className="heroActions">
-              <a className="cta" href="#form">
-                Reveal My Next 24 Months Now
+              <a className="cta" href="#order">
+                Reveal My Next 24 Months
                 <span className="ctaShine" />
               </a>
               <a className="cta ghost" href="#reveal">
@@ -165,12 +221,12 @@ const TwoYearHoroscopePremium = () => {
               <TrustItem title="WhatsApp Summary" desc="Fast + private" />
               <TrustItem title="20–35 Page PDF" desc="Deep detail" />
               <TrustItem title="Timing Windows" desc="Act / avoid" />
-              <TrustItem title="100k+ Reports" desc="Trusted" />
+              <TrustItem title="Trusted" desc="High satisfaction" />
             </div>
 
             <div className="micro">
               <span className="microDot" />
-              <span>Astrology is guidance. You choose the actions.</span>
+              <span>Astrology is guidance. You choose actions.</span>
             </div>
           </motion.div>
 
@@ -193,7 +249,7 @@ const TwoYearHoroscopePremium = () => {
               <MiniStat k="Breakthrough windows" v="Mapped" />
               <MiniStat k="Danger months" v="Flagged" />
               <MiniStat k="Love turning points" v="Timed" />
-              <MiniStat k="Money periods" v="Predictive" />
+              <MiniStat k="Money periods" v="Planned" />
             </div>
           </motion.div>
         </div>
@@ -203,18 +259,18 @@ const TwoYearHoroscopePremium = () => {
       <section id="problem" className="section sectionDark">
         <SectionHead
           eyebrow="The real problem"
-          title="Are these fears secretly eating you alive?"
-          desc="It’s not overthinking. It’s your intuition asking for timing."
+          title="Is timing the missing piece?"
+          desc="Most regrets happen when we act too early… or too late."
         />
 
         <div className="fearGrid">
           {[
-            "What if you stay stuck for 2 years… just because you didn’t know the right time to act?",
-            "What if you miss the ONE opportunity written in your chart?",
-            "What if the person you’re waiting for… is never meant for you?",
-            "Why do you keep repeating the same mistakes in love, money, career?",
-            "What if your breakthrough phase is coming… but you take the wrong path?",
-            "What if a tough phase is coming and you’re completely unprepared for it?",
+            "You feel stuck — but you don’t know what to do next.",
+            "You miss opportunities because you didn’t move at the right time.",
+            "Love feels confusing: on/off, unclear, repeating patterns.",
+            "Money or career swings feel random.",
+            "You sense a big change coming, but can’t read the signs.",
+            "You want clarity before you take a major step.",
           ].map((t, i) => (
             <motion.div
               key={i}
@@ -237,16 +293,15 @@ const TwoYearHoroscopePremium = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.8, ease: easeOut }}
         >
-          <div className="soulTitle">Your doubt is not random.</div>
+          <div className="soulTitle">Clarity reduces mistakes.</div>
           <div className="soulText">
-            Your anxiety is not weakness. Your fear is a signal:
-            <b> “You need clarity.”</b>
+            You don’t need more motivation. You need <b>timing.</b>
           </div>
         </motion.div>
 
         <div className="centerCta">
-          <a className="cta" href="#form">
-            Yes — Reveal My Timing
+          <a className="cta" href="#order">
+            Yes — Show My Timing
             <span className="ctaShine" />
           </a>
         </div>
@@ -256,8 +311,8 @@ const TwoYearHoroscopePremium = () => {
       <section id="reveal" className="section">
         <SectionHead
           eyebrow="What you get"
-          title="Your next 24 months… mapped in shocking detail."
-          desc="Every phase has a window. Every blessing has timing. Every downfall has a warning."
+          title="Your 24-month roadmap"
+          desc="Clear phases, clear windows, clear action."
         />
 
         <div className="revealLayout">
@@ -272,195 +327,145 @@ const TwoYearHoroscopePremium = () => {
             <div className="posterShade" />
             <div className="posterBadge">24-Month Roadmap</div>
             <div className="posterBottom">
-              <div className="posterTitle">Timing beats talent.</div>
+              <div className="posterTitle">Timing beats effort.</div>
               <div className="posterSub">Know when to push • when to pause</div>
             </div>
           </motion.div>
 
           <div className="revealCards">
             <RevealCard
-              icon="🔥"
-              title="Month-by-Month Timeline (24 Months)"
-              points={[
-                "When your life opens up",
-                "When it slows down",
-                "When to take big steps",
-                "When to avoid risk",
-                "When emotions weaken or strengthen",
-              ]}
+              icon="🗓️"
+              title="Month-by-Month Timeline"
+              points={["When life opens", "When it slows", "Best action windows", "Risk months"]}
             />
             <RevealCard
               icon="❤️"
-              title="Love, Breakups & Marriage Phases"
-              points={[
-                "New relationship timing",
-                "Breakup danger months",
-                "Commitment windows",
-                "Intimacy + healing cycles",
-                "“Will they come back?” phases",
-              ]}
+              title="Love Phases"
+              points={["Turning points", "Commitment windows", "Conflict months", "Healing cycles"]}
             />
             <RevealCard
               icon="💼"
-              title="Career, Money & Success Periods"
-              points={[
-                "Job change timing",
-                "Promotion periods",
-                "Business growth months",
-                "Financial breakthroughs",
-                "Months to avoid major risks",
-              ]}
+              title="Career & Money"
+              points={["Growth periods", "Switch timing", "High luck months", "Avoid months"]}
             />
             <RevealCard
               icon="🧿"
-              title="Karmic Challenges & Repeating Patterns"
-              points={[
-                "Why you keep choosing wrong people",
-                "Why career blocks repeat",
-                "What karmic debts must be resolved",
-                "The 1 thing you’re ignoring",
-              ]}
+              title="Patterns & Blocks"
+              points={["Repeating mistakes", "Why it repeats", "What to change", "What to avoid"]}
             />
             <RevealCard
               icon="⏳"
-              title="Prarabdha & Destiny Windows"
-              points={[
-                "Phases where destiny controls outcomes",
-                "Phases where you can rewrite fate",
-              ]}
+              title="Destiny Windows"
+              points={["When destiny dominates", "When you can rewrite", "Best timing"]}
             />
             <RevealCard
               icon="🔑"
-              title="Remedies (Simple, Potent, No Drama)"
-              points={[
-                "For marriage blocks",
-                "For career delays",
-                "For health dips",
-                "For emotional instability",
-                "For bad luck cycles",
-              ]}
+              title="Simple Remedies"
+              points={["Practical steps", "No drama", "Easy routines", "Personalized suggestions"]}
             />
           </div>
         </div>
 
         <div className="centerCta">
           <a className="cta" href="#preview">
-            Show Me The Preview
+            Show The Preview
             <span className="ctaShine" />
           </a>
         </div>
       </section>
 
-      {/* ===== DARK TRUTH ===== */}
-      <section id="truth" className="section sectionDark">
+      {/* ===== PREMIUM SIGNATURES ===== */}
+      <section id="signatures" className="section sectionDark">
         <SectionHead
-          eyebrow="The truth"
-          title="Your life is not stuck. Your timing is."
-          desc="Most people don’t fail because they’re weak. They fail because they act at the wrong time."
+          eyebrow="Bonus add-on"
+          title="Premium Signature Designs"
+          desc="Optional add-on with your report."
         />
 
-        <div className="truthWrap">
+        <div className="sigLayout">
           <motion.div
-            className="truthCard"
-            initial={{ opacity: 0, y: 16 }}
+            className="sigPoster"
+            initial={{ opacity: 0, y: 18 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: easeOut }}
+            transition={{ duration: 0.85, ease: easeOut }}
           >
-            <ul className="truthList">
-              <li>Fighting for love in a period meant for separation</li>
-              <li>Starting a business in a period meant for rest</li>
-              <li>Waiting for marriage in a phase meant for career</li>
-              <li>Quitting a job in a month meant for success</li>
-            </ul>
-            <div className="truthLine">
-              When timing is against you — even the right decisions feel wrong.
-            </div>
-            <div className="truthLine strong">
-              When timing aligns — a small move changes everything.
+            <img src={IMAGES.sig2} alt="Premium signature style sample" />
+            <div className="posterShade" />
+            <div className="posterBadge">Premium Signatures</div>
+            <div className="posterBottom">
+              <div className="posterTitle">Identity, refined.</div>
+              <div className="posterSub">Clean • bold • professional</div>
             </div>
           </motion.div>
 
-          <motion.div
-            className="truthMedia"
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, ease: easeOut }}
-          >
-            <img src={IMAGES.candle} alt="Candlelight ambience" />
-            <div className="truthMediaShade" />
-            <div className="truthTag">Exact windows • yours</div>
-          </motion.div>
+          <div className="sigRight">
+            <div className="sigGrid">
+              {[IMAGES.sig1, IMAGES.sig3, IMAGES.sig4].map((src, i) => (
+                <motion.div
+                  key={i}
+                  className="sigTile"
+                  initial={{ opacity: 0, y: 12 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
+                  transition={{ duration: 0.7, delay: i * 0.06, ease: easeOut }}
+                >
+                  <img src={src} alt={`Signature example ${i + 1}`} />
+                  <div className="sigTileShade" />
+                  <div className="sigTileText">
+                    <div className="sigTileTitle">
+                      {i === 0 ? "Minimal" : i === 1 ? "Premium" : "Bold"}
+                    </div>
+                    <div className="sigTileSub">High-quality design</div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            <motion.div
+              className="sigBullets"
+              initial={{ opacity: 0, y: 12 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.8, ease: easeOut }}
+            >
+              <div className="sigBulletsTitle">What you get</div>
+              <ul className="sigList">
+                <li>3 premium signature options</li>
+                <li>Practice sheet (PDF)</li>
+                <li>Signature tutorial guide</li>
+                <li>Delivered on WhatsApp / Email</li>
+              </ul>
+
+              <div className="centerCta leftCta">
+                <a className="cta" href="#order">
+                  Add Signature Pack
+                  <span className="ctaShine" />
+                </a>
+              </div>
+            </motion.div>
+          </div>
         </div>
-
-        <div className="centerCta">
-          <a className="cta" href="#form">
-            Unlock My Timing Now
-            <span className="ctaShine" />
-          </a>
-        </div>
-      </section>
-
-      {/* ===== PROCESS ===== */}
-      <section id="process" className="section">
-        <SectionHead
-          eyebrow="Trust"
-          title="How your 2-Year Report is actually made"
-          desc="No copy-paste nonsense. Layered analysis with clear timing windows."
-        />
-
-        <div className="steps">
-          <Step
-            n="1"
-            title="You share birth details"
-            desc="DOB, time, place + your current concern."
-          />
-          <Step
-            n="2"
-            title="We analyse in 3 layers"
-            desc="Birth chart + dasha system + transits for 24 months."
-          />
-          <Step
-            n="3"
-            title="You receive the report"
-            desc="20–35 page PDF + WhatsApp summary within 24–48 hours."
-          />
-        </div>
-
-        <motion.div
-          className="proofBar"
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, ease: easeOut }}
-        >
-          <div className="proofTitle">Delivery promise</div>
-          <div className="proofText">Private • secure • no data stored</div>
-          <a className="proofCta" href="#form">
-            Start
-          </a>
-        </motion.div>
       </section>
 
       {/* ===== PREVIEW ===== */}
-      <section id="preview" className="section sectionDark">
+      <section id="preview" className="section">
         <SectionHead
-          eyebrow="Hard proof"
-          title="A small preview of what you’ll discover"
-          desc="The kind of clarity that stops bad decisions before they happen."
+          eyebrow="Preview"
+          title="What you’ll discover"
+          desc="Small glimpse of the clarity you get."
         />
 
         <div className="previewGrid">
           {[
-            "The 3 most dangerous months of your next 2 years",
-            "The exact window where your love life turns",
-            "The month you must NOT take big decisions",
-            "The month where destiny gives you a second chance",
-            "Your luckiest 40 days",
-            "Your health vulnerability periods",
-            "Your karmic lesson for the next 2 years",
-            "Months to avoid risk (money/career)",
+            "Your most important months (next 24)",
+            "Best window for a big decision",
+            "Love turning point timing",
+            "Career growth window",
+            "Risk months to avoid",
+            "Luck peaks (short windows)",
+            "Pattern that keeps repeating",
+            "Your next “reset” phase",
           ].map((t, i) => (
             <motion.div
               key={i}
@@ -477,97 +482,84 @@ const TwoYearHoroscopePremium = () => {
         </div>
 
         <div className="centerCta">
-          <a className="cta" href="#form">
+          <a className="cta" href="#order">
             Get My 2-Year Report
             <span className="ctaShine" />
           </a>
         </div>
       </section>
 
-      {/* ===== FORM ===== */}
-      <section id="form" className="section">
+      {/* ===== ORDER ===== */}
+      <section id="order" className="section sectionDark">
         <SectionHead
           eyebrow="Start now"
-          title="Reveal your personalised 24-month roadmap"
-          desc="Fill the details below. We’ll generate your report with precise timing windows."
+          title="Unlock your 2-Year Kundali Report"
+          desc="Tap below to start on WhatsApp (fast + private)."
         />
 
-        <div className="formWrap">
+        <div className="orderWrap">
           <motion.div
-            className="formSide"
+            className="orderMedia"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: easeOut }}
           >
             <img src={IMAGES.journal} alt="Notebook and pen" />
-            <div className="formSideShade" />
-            <div className="formSideText">
-              <div className="formSideTitle">Private on WhatsApp</div>
-              <div className="formSideSub">No spam • no data stored</div>
+            <div className="orderMediaShade" />
+            <div className="orderMediaText">
+              <div className="orderMediaTitle">Private Delivery</div>
+              <div className="orderMediaSub">WhatsApp summary + PDF</div>
             </div>
           </motion.div>
 
-          <motion.form
-            className="form"
+          <motion.div
+            className="orderCard"
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: easeOut }}
-            onSubmit={(e) => {
-              e.preventDefault();
-              // You can wire this to your backend.
-              // For now, we just scroll to top / show a toast in your app if you want.
-              window.scrollTo({ top: 0, behavior: "smooth" });
-            }}
           >
-            <div className="fieldRow">
-              <div className="field">
-                <label>Full Name</label>
-                <input placeholder="Your name" required />
-              </div>
-              <div className="field">
-                <label>WhatsApp</label>
-                <input placeholder="+91…" inputMode="tel" required />
-              </div>
+            <div className="priceTop">
+              <div className="priceTitle">2-Year Report</div>
+              <div className="priceBadge">24–48 hrs delivery</div>
             </div>
 
-            <div className="fieldRow">
-              <div className="field">
-                <label>Date of Birth</label>
-                <input placeholder="DD/MM/YYYY" required />
-              </div>
-              <div className="field">
-                <label>Birth Time</label>
-                <input placeholder="HH:MM (if known)" />
-              </div>
+            <div className="priceRow">
+              <div className="priceNow">₹499</div>
+              <div className="priceWas">₹1999</div>
+              <div className="priceOff">75% OFF</div>
             </div>
 
-            <div className="fieldRow">
-              <div className="field">
-                <label>Birth Place</label>
-                <input placeholder="City, State" required />
-              </div>
-              <div className="field">
-                <label>Email</label>
-                <input placeholder="you@email.com" type="email" required />
-              </div>
+            <div className="priceNote">
+              Includes: month-by-month timeline • love/career/money windows • remedies
             </div>
 
-            <div className="field">
-              <label>Main Concern</label>
-              <textarea placeholder="Love / marriage / career / money / health… (write 1–2 lines)" rows={4} required />
+            <div className="orderList">
+              <OrderLine k="PDF Report" v="20–35 pages" />
+              <OrderLine k="WhatsApp Summary" v="Yes" />
+              <OrderLine k="Personalised" v="100%" />
+              <OrderLine k="Bonus" v="Signature pack (optional)" />
             </div>
 
-            <button className="cta ctaFull" type="submit">
-              Submit & Reveal My 24 Months
+            {/* Replace this with your real WhatsApp / checkout link */}
+            <a
+              className="cta ctaFull"
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                // window.location.href = "https://wa.me/<number>?text=<encoded>";
+                window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
+            >
+              Start on WhatsApp
               <span className="ctaShine" />
-            </button>
+            </a>
 
             <div className="finePrint">
-              Disclaimer: Astrology is guidance, not fixed fate. You control your actions. We provide clarity & timing.
+              Disclaimer: Astrology is guidance, not fixed fate. You control your actions.
             </div>
-          </motion.form>
+          </motion.div>
         </div>
 
         <div className="footerNote">
@@ -576,15 +568,12 @@ const TwoYearHoroscopePremium = () => {
             <div className="footerShade" />
           </div>
           <div className="footerText">
-            <div className="footerTitle">One report. Two years of answers.</div>
-            <div className="footerSub">
-              The only purchase that protects your future decisions — by fixing timing.
-            </div>
+            <div className="footerTitle">One report. Two years of clarity.</div>
+            <div className="footerSub">Make better decisions by knowing your timing windows.</div>
           </div>
         </div>
       </section>
 
-      {/* ===== CSS ===== */}
       <style>{css}</style>
     </div>
   );
@@ -626,32 +615,38 @@ const RevealCard = ({ icon, title, points }) => (
       <div className="revealIcon">{icon}</div>
       <div className="revealTitle">{title}</div>
     </div>
-    <ul className="revealList">
-      {points.map((p, i) => (
-        <li key={i}>{p}</li>
-      ))}
-    </ul>
-  </motion.div>
-);
 
-const Step = ({ n, title, desc }) => (
-  <motion.div
-    className="step"
-    initial={{ opacity: 0, y: 16 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true }}
-    transition={{ duration: 0.8, ease: easeOut }}
-  >
-    <div className="stepNum">{n}</div>
-    <div className="stepBody">
-      <div className="stepTitle">{title}</div>
-      <div className="stepDesc">{desc}</div>
+    {/* Center-aligned list (pic 2 fix) */}
+    <div className="revealList">
+      {points.map((p, i) => (
+        <div className="revealPoint" key={i}>
+          <span className="rpDot" />
+          <span>{p}</span>
+        </div>
+      ))}
     </div>
   </motion.div>
 );
 
+const OrderLine = ({ k, v }) => (
+  <div className="orderLine">
+    <span className="orderK">{k}</span>
+    <span className="orderV">{v}</span>
+  </div>
+);
+
+const PanelCard = ({ k, v, hint, icon }) => (
+  <div className="panelCard">
+    <div className="panelIcon">{icon}</div>
+    <div className="panelBody">
+      <div className="panelK">{k}</div>
+      <div className="panelV">{v}</div>
+      <div className="panelHint">{hint}</div>
+    </div>
+  </div>
+);
+
 const Stars = () => {
-  // Lightweight starfield using CSS + random dots
   const dots = useMemo(() => {
     const arr = [];
     for (let i = 0; i < 65; i++) {
@@ -700,8 +695,6 @@ const css = `
   :root{
     --bg0:#050712;
     --bg1:#070a16;
-    --card:#0b1022cc;
-    --card2:#0a0f1f99;
     --stroke:rgba(255,255,255,.10);
     --stroke2:rgba(255,255,255,.14);
     --text:rgba(255,255,255,.92);
@@ -827,12 +820,9 @@ const css = `
   }
 
   /* Background FX */
-  .stars{
-    position:fixed; inset:0; pointer-events:none; z-index:0;
-  }
+  .stars{ position:fixed; inset:0; pointer-events:none; z-index:0; }
   .star{
-    position:absolute;
-    border-radius:999px;
+    position:absolute; border-radius:999px;
     background: rgba(255,255,255,.95);
     box-shadow: 0 0 14px rgba(255,255,255,.25);
     animation: tw 4.8s ease-in-out infinite;
@@ -842,32 +832,15 @@ const css = `
     50%{transform:scale(1.7); opacity:1}
   }
 
-  .aurora{
-    position:fixed; inset:0; pointer-events:none; z-index:0;
-    opacity:.9;
-  }
+  .aurora{ position:fixed; inset:0; pointer-events:none; z-index:0; opacity:.9; }
   .aurora .a{
-    position:absolute;
-    width: 520px; height: 520px;
-    border-radius: 999px;
-    filter: blur(60px);
-    opacity:.42;
+    position:absolute; width: 520px; height: 520px; border-radius: 999px;
+    filter: blur(60px); opacity:.42;
     animation: drift 10s ease-in-out infinite;
   }
-  .a1{
-    left:-140px; top: 140px;
-    background: radial-gradient(circle at 30% 30%, rgba(184,140,255,.55), transparent 65%);
-  }
-  .a2{
-    right:-160px; top: 60px;
-    background: radial-gradient(circle at 30% 30%, rgba(109,228,255,.50), transparent 65%);
-    animation-delay: -3s;
-  }
-  .a3{
-    left: 20%; bottom: -260px;
-    background: radial-gradient(circle at 30% 30%, rgba(246,215,125,.35), transparent 65%);
-    animation-delay: -6s;
-  }
+  .a1{ left:-140px; top: 140px; background: radial-gradient(circle at 30% 30%, rgba(184,140,255,.55), transparent 65%); }
+  .a2{ right:-160px; top: 60px; background: radial-gradient(circle at 30% 30%, rgba(109,228,255,.50), transparent 65%); animation-delay: -3s; }
+  .a3{ left: 20%; bottom: -260px; background: radial-gradient(circle at 30% 30%, rgba(246,215,125,.35), transparent 65%); animation-delay: -6s; }
   @keyframes drift{
     0%,100%{transform: translate3d(0,0,0) scale(1)}
     50%{transform: translate3d(40px,-26px,0) scale(1.06)}
@@ -875,25 +848,20 @@ const css = `
 
   /* HERO */
   .hero{
-    position:relative;
-    z-index:1;
+    position:relative; z-index:1;
     padding: 22px 14px 34px;
-    max-width:1120px;
-    margin: 0 auto;
+    max-width:1120px; margin: 0 auto;
   }
-
   .heroMedia{
-    position:absolute;
-    inset: 0;
-    height: 540px;
+    position:absolute; inset:0;
+    height: 560px;
     overflow:hidden;
     border-radius: 26px;
     border: 1px solid rgba(255,255,255,.08);
     box-shadow: var(--shadow);
   }
   .heroImg{
-    width:100%;
-    height:100%;
+    width:100%; height:100%;
     object-fit: cover;
     transform: scale(1.02);
     filter: saturate(1.15) contrast(1.05);
@@ -901,30 +869,137 @@ const css = `
   .heroOverlay{
     position:absolute; inset:0;
     background:
-      radial-gradient(600px 360px at 20% 20%, rgba(184,140,255,.26), transparent 62%),
-      radial-gradient(700px 420px at 80% 15%, rgba(109,228,255,.20), transparent 65%),
-      linear-gradient(180deg, rgba(0,0,0,.70), rgba(0,0,0,.60), rgba(5,7,18,.95));
+      radial-gradient(600px 360px at 20% 20%, rgba(184,140,255,.22), transparent 62%),
+      radial-gradient(700px 420px at 80% 15%, rgba(109,228,255,.18), transparent 65%),
+      linear-gradient(180deg, rgba(0,0,0,.66), rgba(0,0,0,.52), rgba(5,7,18,.92));
   }
   .heroBloom{
     position:absolute; inset:-40px;
     background:
-      radial-gradient(260px 160px at 20% 30%, rgba(246,215,125,.22), transparent 70%),
-      radial-gradient(240px 160px at 75% 35%, rgba(184,140,255,.22), transparent 70%);
+      radial-gradient(260px 160px at 20% 30%, rgba(246,215,125,.20), transparent 70%),
+      radial-gradient(240px 160px at 75% 35%, rgba(184,140,255,.20), transparent 70%);
     filter: blur(8px);
     pointer-events:none;
   }
 
+  /* TOP PANEL with content */
+  .heroTopPanel{
+    position:absolute;
+    left: 14px; right: 14px;
+    top: 82px;
+    height: 210px;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
+    box-shadow: 0 18px 55px rgba(0,0,0,.35);
+    overflow:hidden;
+  }
+  .heroTopPanelStars{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(2px 2px at 10% 25%, rgba(255,255,255,.7), transparent 60%),
+      radial-gradient(2px 2px at 26% 55%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(2px 2px at 44% 35%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(2px 2px at 70% 40%, rgba(255,255,255,.6), transparent 60%),
+      radial-gradient(2px 2px at 84% 65%, rgba(255,255,255,.55), transparent 60%),
+      radial-gradient(2px 2px at 92% 30%, rgba(255,255,255,.65), transparent 60%),
+      linear-gradient(90deg, rgba(184,140,255,.20), rgba(109,228,255,.12), rgba(246,215,125,.10));
+    opacity:.95;
+  }
+  .heroPanelInner{
+    position:absolute; inset:0;
+    padding: 14px 14px;
+    display:flex;
+    flex-direction:column;
+    gap: 10px;
+    backdrop-filter: blur(8px);
+  }
+  .heroPanelHead{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap: 10px;
+  }
+  .heroPanelTitle{
+    font-weight: 950;
+    letter-spacing: -.2px;
+    font-size: 14px;
+    color: rgba(255,255,255,.92);
+  }
+  .heroPanelPill{
+    font-size: 12px;
+    font-weight: 900;
+    padding: 8px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(0,0,0,.18);
+    color: rgba(255,255,255,.86);
+  }
+  .heroPanelGrid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+  .panelCard{
+    display:flex;
+    align-items:flex-start;
+    gap: 10px;
+    padding: 10px 10px;
+    border-radius: 18px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(0,0,0,.18);
+  }
+  .panelIcon{
+    width: 34px; height: 34px;
+    border-radius: 14px;
+    display:flex; align-items:center; justify-content:center;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.06);
+    font-weight: 950;
+  }
+  .panelK{ font-size: 12px; color: rgba(255,255,255,.76); font-weight: 900; letter-spacing:.02em; }
+  .panelV{ margin-top: 2px; font-size: 13px; font-weight: 950; color: rgba(255,255,255,.92); }
+  .panelHint{ margin-top: 2px; font-size: 12px; color: rgba(255,255,255,.60); }
+
+  .heroPanelFooter{
+    margin-top: 2px;
+    display:flex;
+    align-items:center;
+    gap: 10px;
+  }
+  .hpDot{
+    width:7px; height:7px; border-radius:999px;
+    background: linear-gradient(90deg, rgba(246,215,125,.95), rgba(109,228,255,.95));
+    box-shadow: 0 0 18px rgba(246,215,125,.25);
+  }
+  .hpText{
+    font-size: 12px;
+    color: rgba(255,255,255,.68);
+    line-height: 1.35;
+  }
+
+  .heroBottomPlate{
+    position:absolute;
+    left: 14px; right: 14px;
+    bottom: 18px;
+    height: 86px;
+    border-radius: 28px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: radial-gradient(600px 120px at 50% 0%, rgba(255,255,255,.10), rgba(255,255,255,.03));
+    opacity:.55;
+  }
+
   .heroContent{
-    position:relative;
-    z-index:2;
+    position:relative; z-index:2;
     padding-top: 18px;
     display:grid;
     grid-template-columns: 1fr;
     gap: 14px;
   }
 
+  /* moved UP a bit so hero doesn't feel empty */
   .heroCard{
-    margin-top: 210px; /* mobile: pushes card below the top visuals */
+    margin-top: 320px;
     background: linear-gradient(180deg, rgba(12,16,34,.78), rgba(10,14,31,.62));
     border: 1px solid rgba(255,255,255,.12);
     border-radius: var(--radius);
@@ -933,13 +1008,9 @@ const css = `
     backdrop-filter: blur(16px);
   }
 
-  .pillRow{
-    display:flex; flex-wrap:wrap; gap:8px;
-    margin-bottom: 10px;
-  }
+  .pillRow{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom: 10px; }
   .pill{
-    font-size:12px;
-    color: rgba(255,255,255,.88);
+    font-size:12px; color: rgba(255,255,255,.88);
     padding: 7px 10px;
     border-radius:999px;
     border: 1px solid rgba(255,255,255,.12);
@@ -971,14 +1042,8 @@ const css = `
     font-size: 14.5px;
     line-height: 1.55;
   }
-  .sub b{color: rgba(255,255,255,.92)}
 
-  .heroActions{
-    display:flex;
-    flex-direction: column;
-    gap:10px;
-    margin-top: 14px;
-  }
+  .heroActions{ display:flex; flex-direction: column; gap:10px; margin-top: 14px; }
 
   .cta{
     position:relative;
@@ -1037,7 +1102,7 @@ const css = `
     border: 1px solid rgba(255,255,255,.10);
   }
   .trustTitle{font-size:12.5px; font-weight:900}
-  .trustDesc{font-size:12px; color: var(--muted2); margin-top:3px}
+  .trustDesc{font-size:12px; color: rgba(255,255,255,.56); margin-top:3px}
 
   .micro{
     margin-top: 12px;
@@ -1045,7 +1110,7 @@ const css = `
     align-items:center;
     gap:10px;
     font-size:12px;
-    color: var(--muted2);
+    color: rgba(255,255,255,.56);
   }
   .microDot{
     width:7px; height:7px; border-radius:999px;
@@ -1053,9 +1118,7 @@ const css = `
     box-shadow: 0 0 18px rgba(246,215,125,.25);
   }
 
-  .heroSide{
-    display:none;
-  }
+  .heroSide{ display:none; }
   .miniFrame{
     position:relative;
     overflow:hidden;
@@ -1066,44 +1129,35 @@ const css = `
     height: 210px;
   }
   .miniFrame img{width:100%; height:100%; object-fit:cover; filter:saturate(1.1)}
-  .miniShade{
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.75));
-  }
-  .miniText{
-    position:absolute; left:12px; bottom:12px;
-  }
+  .miniShade{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.75)); }
+  .miniText{ position:absolute; left:12px; bottom:12px; }
   .miniTitle{font-weight:950}
-  .miniSub{font-size:12px; color: var(--muted); margin-top:2px}
+  .miniSub{font-size:12px; color: rgba(255,255,255,.72); margin-top:2px}
 
-  .miniGrid{
-    margin-top: 10px;
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap:10px;
-  }
+  .miniGrid{ margin-top: 10px; display:grid; grid-template-columns: 1fr 1fr; gap:10px; }
   .miniStat{
     padding: 12px 12px;
     border-radius: 18px;
     border: 1px solid rgba(255,255,255,.10);
     background: rgba(255,255,255,.04);
   }
-  .miniK{font-size:12px; color: var(--muted)}
+  .miniK{font-size:12px; color: rgba(255,255,255,.72)}
   .miniV{font-size:16px; font-weight:950; margin-top:4px}
 
   @media(min-width: 980px){
     .hero{padding: 28px 16px 40px}
-    .heroMedia{height: 560px}
+    .heroMedia{height: 600px}
+    .heroTopPanel{top: 92px; height: 240px}
     .heroContent{
       grid-template-columns: 1.1fr .9fr;
       align-items: start;
       gap: 16px;
     }
-    .heroCard{margin-top: 240px; padding: 18px 16px}
+    .heroCard{margin-top: 360px; padding: 18px 16px}
     .h1{font-size: 44px}
     .sub{font-size: 15.5px}
     .heroActions{flex-direction: row}
-    .heroSide{display:block; margin-top: 240px}
+    .heroSide{display:block; margin-top: 360px}
   }
 
   /* Sections */
@@ -1122,9 +1176,7 @@ const css = `
     border-top: 1px solid rgba(255,255,255,.06);
     border-bottom: 1px solid rgba(255,255,255,.06);
   }
-  .sectionHead{
-    margin-bottom: 18px;
-  }
+  .sectionHead{ margin-bottom: 18px; }
   .eyebrow{
     display:inline-flex;
     align-items:center;
@@ -1143,7 +1195,7 @@ const css = `
   }
   .desc{
     margin: 10px 0 0;
-    color: var(--muted);
+    color: rgba(255,255,255,.72);
     font-size: 14.5px;
     line-height: 1.6;
     max-width: 70ch;
@@ -1183,7 +1235,6 @@ const css = `
     opacity:.9;
     pointer-events:none;
   }
-
   @media(min-width: 980px){
     .fearGrid{grid-template-columns: 1fr 1fr; gap: 12px}
   }
@@ -1196,14 +1247,9 @@ const css = `
     background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
   }
   .soulTitle{font-weight:950; font-size:15px}
-  .soulText{margin-top:6px; color: var(--muted); font-size: 14.2px; line-height:1.55}
-  .soulText b{color: rgba(255,255,255,.92)}
-
-  .centerCta{
-    margin-top: 18px;
-    display:flex;
-    justify-content:center;
-  }
+  .soulText{margin-top:6px; color: rgba(255,255,255,.72); font-size: 14.2px; line-height:1.55}
+  .centerCta{ margin-top: 18px; display:flex; justify-content:center; }
+  .leftCta{ justify-content:flex-start; }
 
   /* Reveal layout */
   .revealLayout{
@@ -1222,10 +1268,7 @@ const css = `
     height: 260px;
   }
   .revealPoster img{width:100%; height:100%; object-fit:cover; filter:saturate(1.12) contrast(1.05)}
-  .posterShade{
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.78));
-  }
+  .posterShade{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.20), rgba(0,0,0,.78)); }
   .posterBadge{
     position:absolute; left:12px; top:12px;
     font-weight:900; font-size:12px;
@@ -1234,25 +1277,30 @@ const css = `
     color: rgba(0,0,0,.92);
     background: linear-gradient(90deg, rgba(246,215,125,.96), rgba(109,228,255,.85));
   }
-  .posterBottom{
-    position:absolute; left:12px; right:12px; bottom:12px;
-  }
+  .posterBottom{ position:absolute; left:12px; right:12px; bottom:12px; }
   .posterTitle{font-weight:950; font-size:16px}
-  .posterSub{margin-top:4px; font-size:12.5px; color: var(--muted)}
+  .posterSub{margin-top:4px; font-size:12.5px; color: rgba(255,255,255,.72)}
 
   .revealCards{
     display:grid;
     grid-template-columns: 1fr;
     gap: 10px;
   }
+
+  /* PIC 2 FIX: cards centered + text centered */
   .revealCard{
     padding: 14px 14px;
     border-radius: 20px;
     border: 1px solid rgba(255,255,255,.10);
     background: rgba(255,255,255,.04);
+    text-align:center;
   }
   .revealTop{
-    display:flex; align-items:flex-start; gap:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-bottom: 10px;
   }
   .revealIcon{
     width:36px; height:36px; border-radius: 14px;
@@ -1260,6 +1308,7 @@ const css = `
     background: rgba(255,255,255,.06);
     border: 1px solid rgba(255,255,255,.10);
     font-size: 16px;
+    flex: 0 0 auto;
   }
   .revealTitle{
     font-weight:950;
@@ -1267,125 +1316,89 @@ const css = `
     line-height:1.2;
   }
   .revealList{
-    margin: 10px 0 0;
-    padding: 0 0 0 18px;
-    color: var(--muted);
-    font-size: 13.8px;
-    line-height:1.6;
+    display:flex;
+    flex-direction:column;
+    gap: 8px;
+    margin-top: 6px;
+    align-items:center;
   }
-  .revealList li{margin: 6px 0}
+  .revealPoint{
+    display:flex;
+    align-items:center;
+    gap: 10px;
+    color: rgba(255,255,255,.72);
+    font-size: 13.8px;
+    line-height:1.4;
+  }
+  .rpDot{
+    width:7px; height:7px; border-radius:999px;
+    background: rgba(246,215,125,.95);
+    box-shadow: 0 0 16px rgba(246,215,125,.20);
+    opacity:.9;
+  }
+
   @media(min-width: 980px){
     .revealLayout{grid-template-columns: .9fr 1.1fr; gap: 16px}
     .revealPoster{height: 540px}
     .revealCards{grid-template-columns: 1fr 1fr}
+    .revealCard{text-align:left}
+    .revealTop{justify-content:flex-start}
+    .revealList{align-items:flex-start}
   }
 
-  /* Truth */
-  .truthWrap{
+  /* Signatures */
+  .sigLayout{
     display:grid;
     grid-template-columns: 1fr;
-    gap: 12px;
+    gap: 14px;
     margin-top: 14px;
   }
-  .truthCard{
+  .sigPoster{
+    position:relative;
+    overflow:hidden;
     border-radius: var(--radius);
     border: 1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.04);
-    padding: 14px 14px;
+    background: rgba(255,255,255,.03);
+    box-shadow: var(--shadow2);
+    height: 260px;
   }
-  .truthList{
-    margin:0;
-    padding: 0 0 0 18px;
-    color: rgba(255,255,255,.86);
-    font-size: 14.2px;
-    line-height: 1.6;
-  }
-  .truthList li{margin: 8px 0}
-  .truthLine{
-    margin-top: 12px;
-    color: var(--muted);
-    font-size: 14px;
-    line-height:1.55;
-  }
-  .truthLine.strong{
-    color: rgba(255,255,255,.92);
-    font-weight:900;
-  }
-  .truthMedia{
+  .sigPoster img{width:100%; height:100%; object-fit:cover; filter:saturate(1.1) contrast(1.02)}
+  .sigRight{display:flex; flex-direction:column; gap: 12px}
+  .sigGrid{ display:grid; grid-template-columns: 1fr; gap: 10px; }
+  .sigTile{
     position:relative;
-    border-radius: var(--radius);
+    border-radius: 20px;
     border: 1px solid rgba(255,255,255,.10);
     overflow:hidden;
-    height: 220px;
+    background: rgba(255,255,255,.03);
+    height: 160px;
+    box-shadow: 0 14px 38px rgba(0,0,0,.25);
   }
-  .truthMedia img{width:100%; height:100%; object-fit:cover; filter: saturate(1.08)}
-  .truthMediaShade{
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.78));
-  }
-  .truthTag{
-    position:absolute; left:12px; bottom:12px;
-    padding: 8px 10px;
-    border-radius: 999px;
-    font-size: 12px;
-    font-weight: 900;
-    border: 1px solid rgba(255,255,255,.12);
-    background: rgba(255,255,255,.06);
-  }
-  @media(min-width: 980px){
-    .truthWrap{grid-template-columns: 1.1fr .9fr; gap: 16px}
-    .truthMedia{height: 100%}
-  }
-
-  /* Steps */
-  .steps{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-    margin-top: 14px;
-  }
-  .step{
-    display:flex;
-    gap: 12px;
+  .sigTile img{width:100%; height:100%; object-fit:cover}
+  .sigTileShade{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.78)); }
+  .sigTileText{ position:absolute; left:12px; bottom:12px; right:12px; }
+  .sigTileTitle{font-weight:950}
+  .sigTileSub{margin-top:3px; font-size:12.5px; color: rgba(255,255,255,.72)}
+  .sigBullets{
     padding: 14px 14px;
     border-radius: 22px;
     border: 1px solid rgba(255,255,255,.10);
     background: rgba(255,255,255,.04);
   }
-  .stepNum{
-    width: 40px; height: 40px;
-    border-radius: 16px;
-    display:flex; align-items:center; justify-content:center;
-    font-weight: 950;
-    color: rgba(0,0,0,.92);
-    background: linear-gradient(90deg, rgba(246,215,125,.95), rgba(184,140,255,.90));
+  .sigBulletsTitle{font-weight:950; font-size:15px}
+  .sigList{
+    margin: 10px 0 0;
+    padding: 0 0 0 18px;
+    color: rgba(255,255,255,.72);
+    font-size: 14px;
+    line-height: 1.6;
   }
-  .stepTitle{font-weight: 950}
-  .stepDesc{margin-top: 4px; color: var(--muted); font-size: 14px; line-height:1.55}
+  .sigList li{margin: 6px 0}
   @media(min-width: 980px){
-    .steps{grid-template-columns: 1fr 1fr 1fr}
-  }
-
-  .proofBar{
-    margin-top: 14px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap: 10px;
-    padding: 14px 14px;
-    border-radius: 22px;
-    border: 1px solid rgba(255,255,255,.10);
-    background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.03));
-  }
-  .proofTitle{font-weight:950}
-  .proofText{color: var(--muted); font-size: 13.5px}
-  .proofCta{
-    text-decoration:none;
-    font-weight: 950;
-    color: rgba(0,0,0,.92);
-    padding: 10px 12px;
-    border-radius: 999px;
-    background: linear-gradient(90deg, rgba(109,228,255,.85), rgba(246,215,125,.95));
+    .sigLayout{grid-template-columns: .9fr 1.1fr; gap: 16px}
+    .sigPoster{height: 520px}
+    .sigGrid{grid-template-columns: 1fr 1fr; gap: 12px}
+    .sigTile{height: 180px}
   }
 
   /* Preview */
@@ -1419,14 +1432,14 @@ const css = `
     .previewGrid{grid-template-columns: 1fr 1fr}
   }
 
-  /* Form */
-  .formWrap{
+  /* Order */
+  .orderWrap{
     display:grid;
     grid-template-columns: 1fr;
     gap: 12px;
     margin-top: 14px;
   }
-  .formSide{
+  .orderMedia{
     position:relative;
     overflow:hidden;
     border-radius: var(--radius);
@@ -1434,65 +1447,65 @@ const css = `
     background: rgba(255,255,255,.03);
     height: 220px;
   }
-  .formSide img{width:100%; height:100%; object-fit:cover}
-  .formSideShade{
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.78));
-  }
-  .formSideText{
-    position:absolute; left:12px; bottom:12px; right:12px;
-  }
-  .formSideTitle{font-weight:950; font-size:16px}
-  .formSideSub{margin-top:4px; color: var(--muted); font-size:12.5px}
+  .orderMedia img{width:100%; height:100%; object-fit:cover}
+  .orderMediaShade{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.78)); }
+  .orderMediaText{ position:absolute; left:12px; bottom:12px; right:12px; }
+  .orderMediaTitle{font-weight:950; font-size:16px}
+  .orderMediaSub{margin-top:4px; color: rgba(255,255,255,.72); font-size:12.5px}
 
-  .form{
+  .orderCard{
     border-radius: var(--radius);
     border: 1px solid rgba(255,255,255,.10);
     background: rgba(255,255,255,.04);
     padding: 14px 14px;
   }
-  .fieldRow{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: 10px;
-  }
-  .field{margin-top: 10px}
-  label{
-    display:block;
-    font-size: 12px;
-    letter-spacing:.08em;
-    text-transform:uppercase;
-    color: rgba(255,255,255,.68);
-    margin-bottom: 8px;
-  }
-  input, textarea{
-    width:100%;
-    border-radius: 16px;
+  .priceTop{ display:flex; align-items:center; justify-content:space-between; gap: 10px; }
+  .priceTitle{font-weight:950; font-size:16px}
+  .priceBadge{
+    font-size:12px; font-weight:900;
+    padding: 8px 10px;
+    border-radius: 999px;
     border: 1px solid rgba(255,255,255,.12);
-    background: rgba(10,14,31,.55);
-    color: rgba(255,255,255,.92);
-    padding: 12px 12px;
-    outline:none;
-    font-size: 14.5px;
+    background: rgba(255,255,255,.06);
+    color: rgba(255,255,255,.88);
   }
-  input::placeholder, textarea::placeholder{color: rgba(255,255,255,.46)}
-  input:focus, textarea:focus{
-    border-color: rgba(246,215,125,.35);
-    box-shadow: 0 0 0 6px rgba(246,215,125,.08);
+  .priceRow{ margin-top: 10px; display:flex; align-items:baseline; gap: 10px; flex-wrap:wrap; }
+  .priceNow{
+    font-weight:950;
+    font-size: 30px;
+    letter-spacing: -.3px;
+    background: linear-gradient(90deg, rgba(246,215,125,.95), rgba(184,140,255,.95));
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
   }
+  .priceWas{ color: rgba(255,255,255,.52); text-decoration: line-through; font-weight:800; }
+  .priceOff{
+    font-size:12px;
+    font-weight:950;
+    padding: 6px 10px;
+    border-radius: 999px;
+    color: rgba(0,0,0,.92);
+    background: linear-gradient(90deg, rgba(109,228,255,.85), rgba(246,215,125,.95));
+  }
+  .priceNote{ margin-top: 8px; color: rgba(255,255,255,.72); font-size: 13.8px; line-height: 1.55; }
 
-  .ctaFull{width:100%; margin-top: 12px}
-  .finePrint{
-    margin-top: 10px;
-    color: rgba(255,255,255,.56);
-    font-size: 12.5px;
-    line-height: 1.55;
+  .orderList{ margin-top: 12px; display:flex; flex-direction:column; gap: 10px; }
+  .orderLine{
+    display:flex; justify-content:space-between; align-items:center; gap: 10px;
+    padding: 10px 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(255,255,255,.10);
+    background: rgba(255,255,255,.04);
   }
+  .orderK{color: rgba(255,255,255,.78); font-size: 13px; font-weight:800}
+  .orderV{color: rgba(255,255,255,.92); font-size: 13px; font-weight:950}
+  .ctaFull{width:100%; margin-top: 12px}
+  .finePrint{ margin-top: 10px; color: rgba(255,255,255,.56); font-size: 12.5px; line-height: 1.55; }
 
   @media(min-width: 980px){
-    .formWrap{grid-template-columns: .9fr 1.1fr; gap: 16px}
-    .fieldRow{grid-template-columns: 1fr 1fr}
-    .formSide{height: 100%}
+    .orderWrap{grid-template-columns: .9fr 1.1fr; gap: 16px}
+    .orderMedia{height: 100%}
   }
 
   /* Footer */
@@ -1505,28 +1518,13 @@ const css = `
     display:grid;
     grid-template-columns: 1fr;
   }
-  .footerImg{
-    position:relative;
-    height: 160px;
-  }
+  .footerImg{ position:relative; height: 160px; }
   .footerImg img{width:100%; height:100%; object-fit:cover; filter:saturate(1.08)}
-  .footerShade{
-    position:absolute; inset:0;
-    background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.80));
-  }
-  .footerText{
-    padding: 14px 14px;
-  }
-  .footerTitle{
-    font-weight: 950;
-    font-size: 16px;
-  }
-  .footerSub{
-    margin-top: 6px;
-    color: var(--muted);
-    font-size: 13.8px;
-    line-height: 1.55;
-  }
+  .footerShade{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.15), rgba(0,0,0,.80)); }
+  .footerText{ padding: 14px 14px; }
+  .footerTitle{ font-weight: 950; font-size: 16px; }
+  .footerSub{ margin-top: 6px; color: rgba(255,255,255,.72); font-size: 13.8px; line-height: 1.55; }
+
   @media(min-width: 980px){
     .footerNote{grid-template-columns: .7fr 1.3fr}
     .footerImg{height: 100%}
