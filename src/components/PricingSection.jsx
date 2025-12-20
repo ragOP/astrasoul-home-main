@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 // FOMO features data
 const FOMO_FEATURES_DATA = [
   'Limited to 10 sessions per week',
-  'Once full, next batch opens next month',
+  'Limited slots, next batch opens next month',
   'Special pricing valid for 24 hours only',
   'Includes all 6 premium reports',
   'Priority booking for next available slot'
@@ -110,7 +110,7 @@ function PricingSection() {
           {/* Limited Sessions Info */}
           <div className="text-center mb-8 sm:mb-12">
             <p className="text-lg sm:text-xl text-white/90 font-medium italic animate-pulse">
-              Limited sessions per week. Once full, next batch opens next month.
+              Limited sessions per week. Limited slots, next batch opens next month.
             </p>
           </div>
 
@@ -120,7 +120,7 @@ function PricingSection() {
               <div className="absolute -inset-4 bg-gradient-to-r from-green-500/20 to-blue-500/20 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-500" />
               <div className="relative p-6 rounded-2xl bg-white/10 border border-white/20">
                 <p className="text-xl sm:text-2xl lg:text-3xl text-white/95 font-bold italic">
-                  "Zindagi mein clarity chaahiye toh, stars ko samajhna padega."
+                  "Zindagi mein clarity chahiye toh stars ko samajhna padega."
                 </p>
               </div>
             </div>

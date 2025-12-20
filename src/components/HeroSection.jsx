@@ -33,19 +33,19 @@ const HeroSection = () => {
         <div className="max-w-4xl mx-auto space-y-5 md:space-y-8">
           {/* Main Headline */}
           <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-serif font-bold leading-tight animate-fade-up">
-            Discover What the Universe{" "}
+            Discover What The Universe{" "}
             <span className="text-gradient-gold">Already Knows</span>{" "}
             About You.
           </h1>
           
           {/* Subheadline - tighter on mobile */}
           <p className="text-base sm:text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto animate-fade-up delay-200 opacity-0" style={{ animationFillMode: 'forwards' }}>
-            Get a deeply personalized astrology insight about your love life, money, emotions & destiny — created uniquely from your details.
+            Get a deeply personalized astrology insight about your love life, money, emotions & destiny — uniquely created for you.
           </p>
           
           {/* Clarifying line */}
           <p className="text-sm text-gold/60 animate-fade-up delay-300 opacity-0" style={{ animationFillMode: 'forwards' }}>
-            Answer 2–3 questions. Get your insight instantly.
+            Answer 2–3 questions and get your insight instantly.
           </p>
           
           {/* CTA Section - closer to headline on mobile */}

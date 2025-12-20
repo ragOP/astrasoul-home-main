@@ -31,6 +31,7 @@ import RaghibCart from "./pages/RaghibCart";
 import Kundali from "./Kundali";
 import Kundali2 from "./Kundali2";
 import New from "./New";
+import SignAstro from "./SignAstro";
 
 const queryClient = new QueryClient();
 
@@ -45,6 +46,7 @@ const App = () => (
            <Route path="/consultation" element={<Home />} />
      <Route path="/kundali" element={<Kundali />} />
              <Route path="/kundali2" element={<Kundali2 />} />
+               <Route path="/signastro" element={<SignAstro />} />
           <Route path="/consultation" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart-2" element={<LoveCart />} />

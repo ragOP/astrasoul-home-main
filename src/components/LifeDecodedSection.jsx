@@ -12,7 +12,7 @@ const PROBLEMS_DATA = [
 const BENEFITS_DATA = [
   'Clarity on why certain patterns repeat?',
   'Answers to the biggest love, marriage, and money questions?',
-  'Real, practical timelines for when your life will shift?'
+  'Real practical timelines for when your life will shift?'
 ];
 
 // Reusable UI components
@@ -177,7 +177,7 @@ function LifeDecodedSection() {
                 <section className="space-y-6 sm:space-y-10">
                   <div className="relative">
                     <p className="text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-4xl mx-auto font-medium">
-                      That's what you get inside this 1-on-1 Personal Session with Our Certified Astrolger — a guided, peaceful, and eye-opening call.
+                      That's what you get inside this 1-on-1 Personal Session with Our Certified Astrolgers — a guided, peaceful and eye-opening call.
                     </p>
                     <div className="absolute -inset-4 bg-gradient-to-r from-amber-500/10 to-purple-500/10 rounded-2xl blur-xl" />
                   </div>

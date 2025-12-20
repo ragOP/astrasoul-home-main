@@ -204,7 +204,7 @@ const TestimonialCard = ({ testimonial }) => {
         </div>
       </div>
 
-<div className="mt-6">
+{/* <div className="mt-6">
           <a
             href="/privacy"
             className="relative z-20 inline-block text-purple-200 hover:text-white underline underline-offset-4 decoration-purple-300/60 hover:decoration-white transition-colors"
@@ -213,7 +213,7 @@ const TestimonialCard = ({ testimonial }) => {
           </a>
   <p className="text-white">SAKSHI SRIVASTAVA
 SPEKLIO MEDIA --09PTKPS8265R1ZX</p>
-        </div>
+        </div> */}
 
     </div>
   );

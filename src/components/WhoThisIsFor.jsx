@@ -3,7 +3,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const qualities = [
   "Curious but not superstitious",
-  "Seeking clarity, not fear",
+  "Seeking clarity not fear",
   "Open to self-discovery",
   "Values privacy",
 ];

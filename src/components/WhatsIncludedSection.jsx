@@ -6,32 +6,32 @@ import PrimaryButton from './PrimaryButton';
 const SERVICES_DATA = [
     {
         title: '45-Minute Live Consultation',
-        description: 'With India\'s most trusted astro-numerologist, personally on call.',
+        description: 'With India\'s most trusted astro-numerologist personally on call.',
         icon: '📞'
     },
     {
         title: 'Free Kundali Analysis',
-        description: 'A detailed birth chart breakdown — simplified for you.',
+        description: 'A detailed birth chart breakdown simplified especially for you.',
         icon: '🔮'
     },
     {
         title: 'Love Report PDF',
-        description: 'Covers your emotional patterns, love timeline, soulmate clarity, and more.',
+        description: 'Covers your emotional patterns, love timeline, soulmate clarity and more.',
         icon: '💕'
     },
     {
         title: 'Wealth Report PDF',
-        description: 'Career direction, money blocks, business timing & wealth astrology.',
+        description: 'Career direction money blocks, business timing & wealth astrology.',
         icon: '💰'
     },
     {
-        title: 'Ask ANY Question You Have',
-        description: 'About your past, present, or future — this call is fully customized to you.',
+        title: 'Ask ANY Questions You Have',
+        description: 'About your past, present, or future — this call is fully customized for you.',
         icon: '❓'
     },
     {
         title: 'Numerology Add-On',
-        description: 'Our Astrolger will also decode your name vibration and number destiny.',
+        description: 'Our Astrolgers will also decode your name, vibrations and number destiny.',
         icon: '🔢'
     }
 ];

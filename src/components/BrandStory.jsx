@@ -24,11 +24,11 @@ const BrandStory = () => {
             <ul className="space-y-3 text-base md:text-lg text-muted-foreground">
               <li className="flex items-center justify-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                Personalized, not generic
+                Personalized not generic
               </li>
               <li className="flex items-center justify-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold" />
-                Emotion-focused, not fear-driven
+                Emotion-focused not fear-driven
               </li>
               <li className="flex items-center justify-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-gold" />
@@ -39,7 +39,7 @@ const BrandStory = () => {
           
           {/* Belief-breaker line */}
           <p className="text-sm md:text-base text-gold/80 font-medium">
-            No fear-based predictions. No superstition. Just clarity.
+            No fear-based predictions. No superstition. Just clarity for you.
           </p>
           
           <div className="flex items-center justify-center gap-8 pt-2">

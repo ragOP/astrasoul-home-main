@@ -9,7 +9,7 @@ const ServicesSection = () => {
       icon: "📞",
       title: "Live Call",
       subtitle: "45 mins",
-      description: "Transformative 45-minute consultation with our certified expert. Get personalized insights about love, career, and finances. Ask questions and receive immediate guidance to unlock your potential.",
+      description: "Transformative 45-minute consultation with our certified experts. Get personalized insights about love, career and finances. Ask questions and receive immediate guidance to unlock your potential.",
       gradientFrom: "from-amber-500/20",
       gradientTo: "to-orange-500/20",
       borderColor: "hover:border-amber-400/50"
@@ -18,7 +18,7 @@ const ServicesSection = () => {
       icon: "🔮",
       title: "Kundali Reading",
       subtitle: "Detailed Analysis",
-      description: "Comprehensive birth chart analysis revealing your life's purpose and opportunities. Discover hidden talents, understand relationships, and identify the best timing for important decisions.",
+      description: "Comprehensive birth chart analysis revealing your life's purpose and opportunities. Discover hidden talents, understand relationships and identify the best timing for important decisions.",
       gradientFrom: "from-purple-500/20",
       gradientTo: "to-pink-500/20",
       borderColor: "hover:border-purple-400/50"
@@ -27,7 +27,7 @@ const ServicesSection = () => {
       icon: "📄",
       title: "Love + Wealth",
       subtitle: "PDF Report",
-      description: "In-depth reports covering love life, career prospects, and financial opportunities. Receive personalized recommendations and strategies to enhance your success in both areas.",
+      description: "In-depth reports covering your love life, career prospects, and financial opportunities. Receive personalized recommendations and strategies to enhance your success in both areas.",
       gradientFrom: "from-green-500/20",
       gradientTo: "to-teal-500/20",
       borderColor: "hover:border-green-400/50"

@@ -11,7 +11,7 @@ const products = [
     icon: MessageCircle,
     title: "Love Consultation",
     hook: "Confused about love?",
-    description: "Get clear guidance tailored only to you from expert astrologers.",
+    description: "Get clear guidance tailored only for you by our expert astrologers.",
     image: productConsultation,
     href: "https://www.astrasoul.digital/consultation",
     tag: "Most Popular",
@@ -32,7 +32,7 @@ const products = [
     icon: Sparkles,
     title: "Bracelet + Report Combo",
     hook: "Manifesting abundance?",
-    description: "Energized crystal bracelet + comprehensive love & wealth report.",
+    description: "Energized crystal bracelet + comprehensive love & wealth report tailored only for you.",
     image: productBraceletCombo,
     href: "https://www.astrasoul.digital/bracelet",
     tag: "Best Value",
@@ -57,7 +57,7 @@ const ProductCategories = () => {
             Explore Your Path
           </h2>
           <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto">
-            Choose the insights that resonate with your soul's journey
+            Select the insights that resonates with your soul's journey
           </p>
         </div>
 

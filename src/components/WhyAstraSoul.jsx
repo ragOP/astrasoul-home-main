@@ -4,7 +4,7 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 const differentiators = [
   "Clarity without fear",
   "No fake promises",
-  "Personalized, not generic",
+  "Personalized not generic",
   "For modern minds",
   "Instant digital delivery",
 ];

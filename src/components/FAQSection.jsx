@@ -10,17 +10,17 @@ const faqs = [
   {
     question: "Is this astrology based on fear or negative predictions?",
     answer:
-      "No. AstraSoul Digital follows an ethical, clarity-focused approach. We do not use fear-based language, threats, or negative predictions. Our insights are designed to guide, not scare.",
+      "No. AstraSoul Digital follows an ethical, clarity-focused approach. We do not use fear-based language, threats, or negative predictions. Our insights are designed to guide not scare.",
   },
   {
     question: "How personalized are these insights?",
     answer:
-      "Every insight is created specifically for you using the details you share. These are not generic PDFs or automated horoscopes — personalization is the core of AstraSoul.",
+      "Every insight is created specifically for you using the details you share. These are not generic PDFs or automated horoscopes instead personalization is the core of AstraSoul.",
   },
   {
     question: "How and when will I receive my report or insight?",
     answer:
-      "Your insight is delivered digitally. Most products are available instantly or within a short processing time, depending on the product selected. No calls. No follow-ups. No waiting.",
+      "Your insight is delivered digitally. Most products are available instantly or within a short processing time depending on the product selected. No calls. No follow-ups. No waiting.",
   },
   {
     question: "Is my personal information safe?",
@@ -40,7 +40,7 @@ const faqs = [
   {
     question: "Can I gift an AstraSoul product to someone else?",
     answer:
-      "Yes. Many of our products, especially love and combination insights, are commonly gifted. Just enter the recipient's details during checkout.",
+      "Yes. Many of our products, especially love and combination insights are commonly gifted. Just enter the recipient's details during checkout.",
   },
   {
     question: "What if I have questions after purchasing?",
@@ -93,7 +93,7 @@ const FAQSection = () => {
 
           {/* Bridge line to CTA */}
           <p className="text-center text-gold/80 mt-10 text-sm md:text-base font-medium">
-            Still curious? Your answers are already written.
+            Still curious? Just share your details with us and get a clarity.
           </p>
         </div>
       </div>

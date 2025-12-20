@@ -4,13 +4,13 @@ import { useScrollAnimation } from "@/hooks/useScrollAnimation";
 
 const testimonials = [
   {
-    quote: "The soulmate sketch felt unreal. It matched someone I already know. It gave me clarity and confidence about my path.",
+    quote: "The soulmate sketch felt unreal. It matched with someone I already know. It gave me clarity and confidence about my path.",
     name: "Priya",
     city: "Mumbai",
     isHighlighted: true,
   },
   {
-    quote: "I didn't expect astrology to feel this practical. The wealth report gave clarity, not fear.",
+    quote: "I didn't expect astrology to feel this practical and personal. The wealth report gave clarity not fear.",
     name: "Rohit",
     city: "Delhi",
   },
@@ -41,7 +41,7 @@ const Testimonials = () => {
         }`}>
           {/* CRO headline */}
           <p className="text-gold text-sm font-medium tracking-wide uppercase mb-3">
-            People come curious. They leave with clarity.
+            People come to us curious but leave with clarity.
           </p>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-serif font-bold mb-4">
             Real People. <span className="text-gradient-gold">Real Experiences.</span>

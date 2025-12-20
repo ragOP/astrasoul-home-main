@@ -11,7 +11,7 @@ const steps = [
   {
     icon: Sparkles,
     number: "2",
-    title: "We create your insight",
+    title: "We create your insights",
     description: "Personalized for you",
   },
   {
