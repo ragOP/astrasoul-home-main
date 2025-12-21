@@ -153,7 +153,7 @@ const TwoYearHoroscopePremium = () => {
             <div className="pillRow">
               <span className="pill">WhatsApp Private Delivery</span>
               <span className="pill">100% Personalised</span>
-              <span className="pill">No copy-paste</span>
+              <span className="pill">No copy paste</span>
             </div>
 
             <h1 className="h1">
