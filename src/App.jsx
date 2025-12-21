@@ -32,6 +32,8 @@ import Kundali from "./Kundali";
 import Kundali2 from "./Kundali2";
 import New from "./New";
 import SignAstro from "./SignAstro";
+import Minimal from "./Minimal";
+
 
 const queryClient = new QueryClient();
 
@@ -65,6 +67,7 @@ const App = () => (
           <Route path="/signature" element={<Signature />} />
           <Route path="/signature-cart" element={<SignatureCart />} />
           <Route path="/signature-record" element={<SignatureRecord />} />
+            <Route path="/minimal" element={<Minimal />} />
           <Route
             path="/signature-order-confirmation"
             element={<SignatureOrderConfirmation />}
