@@ -11,6 +11,7 @@ import Home from "./pages/Home";
 
 
 import Cart from "./pages/Cart";
+import KundliCart from "./pages/Kundli-Cart";
 import "./App.css";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import Record from "./pages/Record";
@@ -24,7 +25,7 @@ import SignatureCart from "./pages/SignatureCart";
 import SignatureRecord from "./pages/SignatureRecord";
 import SignatureOrderConfirmation from "./pages/SignatureOrderConfirmation";
 import FortuneReport from "./pages/FortuneReport";
-
+import KundliConfirmation from "./pages/Kundli-Confirmation";
 import Privacy from "./pages/Privacy";
 import Raghib from "./pages/Raghib";
 import RaghibCart from "./pages/RaghibCart";
@@ -53,6 +54,7 @@ const App = () => (
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart-2" element={<LoveCart />} />
           <Route path="/order-confirmation" element={<OrderConfirmation />} />
+          <Route path="/kundli-order-confirmation" element={<KundliConfirmation />} />
           <Route
             path="/order-confirmation-2"
             element={<LoveOrderConfirmation />}
@@ -73,6 +75,7 @@ const App = () => (
             element={<SignatureOrderConfirmation />}
           />
           <Route path="/fortune-report" element={<FortuneReport />} />
+          <Route path="/kundli-cart" element={<KundliCart />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
