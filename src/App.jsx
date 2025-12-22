@@ -34,6 +34,7 @@ import Kundali2 from "./Kundali2";
 import New from "./New";
 import SignAstro from "./SignAstro";
 import Minimal from "./Minimal";
+import RecordKundali from "./pages/RecordKundali";
 
 
 const queryClient = new QueryClient();

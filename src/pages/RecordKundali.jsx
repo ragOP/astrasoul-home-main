@@ -12,7 +12,7 @@ const Record = () => {
 
   const fetchOrders = async () => {
     try {
-      const response = await fetch(`${BACKEND_URL}/api/lander1/get-orders`)
+      const response = await fetch(`${BACKEND_URL}/api/lander13/get-orders`)
       const result = await response.json()
 
       if (result.success) {
