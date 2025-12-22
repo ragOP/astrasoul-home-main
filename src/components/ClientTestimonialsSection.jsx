@@ -9,26 +9,27 @@ const ClientTestimonialsSection = () => {
   const [currentX, setCurrentX] = useState(0);
   const carouselRef = useRef(null);
 
-  const testimonials = [
-    {
-      id: 1,
-      name: "Vikram R.",
-      text: "A friend recommended this, and I'm so glad I tried it. The sketch is now my phone wallpaper, a daily reminder of who to look for.",
-      rating: 5
-    },
-    {
-      id: 2,
-      name: "Sunita M.",
-      text: "I received my sketch within 24 hours as promised. The details were incredible, from his eyes to the small mole on his cheek.",
-      rating: 5
-    },
-    {
-      id: 3,
-      name: "Karan V.",
-      text: "The likeness to someone I met a month later is uncanny. I'm a believer now. This service is worth every penny and more!",
-      rating: 5
-    }
-  ];
+ const testimonials = [
+  {
+    id: 1,
+    name: "Ankit S.",
+    text: "The month-by-month timeline was the most useful part for me. It clearly showed when to slow down and when to push. I avoided a bad investment just by following the risk months.",
+    rating: 5
+  },
+  {
+    id: 2,
+    name: "Neha P.",
+    text: "I liked that it wasn’t vague. The report explained why certain patterns kept repeating in my relationships and gave clear timing windows. The WhatsApp summary was very convenient.",
+    rating: 5
+  },
+  {
+    id: 3,
+    name: "Rohit K.",
+    text: "This helped me plan a career switch with more confidence. The growth and pause periods made sense when I matched them with what was already happening in my life.",
+    rating: 5
+  }
+];
+
 
   // Auto carousel for mobile
   useEffect(() => {

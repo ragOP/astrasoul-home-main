@@ -17,9 +17,9 @@ function Cart() {
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
-      name: "Premium Astro Consultation",
+      name: "2-Year Kundali Report — Timing Windows (24 Months)",
       description:
-        "1-on-1 personalized consultation with India's top astro-numerology expert",
+        "Your next 24 months — mapped with timing windows. Month-by-month phases: when to push, pause, avoid risk, or act — based on your chart timing.",
       price: 1499,
       originalPrice: 9999,
       duration: "45 minutes",
@@ -46,22 +46,52 @@ function Cart() {
     preferredDateTime: "",
   });
 
-  // Additional products data
+  // ✅ UPDATED: Additional products (NEW CONTENT)
+  // NOTE:
+  // - id must be unique
+  // - title is what you currently send to backend in "additionalProducts"
+  // - price/originalPrice controls totals + discount
   const additionalProducts = [
     {
       id: 2,
-      title: "Plan Your Future — Month by Month!",
+      title: "Premium Asto Consultation",
       description:
-        "Wondering what 2025 and 2026 hold for your love life, finances, and growth? This detailed month-by-month astrological forecast gives you the clarity you need to plan ahead with confidence!",
+        "Your next 24 months — mapped with timing windows. Month-by-month phases: when to push, pause, avoid risk, or act — based on your chart timing.",
       features: [
-        "Key dates for love, wealth & career",
-        "Monthly guidance for 24 months",
-        "Easy-to-follow format",
-        "Based 100% on your birth chart",
+        "24-month month-by-month timeline",
+        "Breakthrough windows (mapped)",
+        "Danger / risk months (flagged)",
+        "Love turning points (timed)",
+        "Money + career periods (planned)",
+        "Simple personalized remedies",
       ],
-      price: 199,
-      originalPrice: 2999,
-      icon: "🔮",
+      price: 499,
+      originalPrice: 1999,
+      icon: "🌌",
+      color: {
+        from: "from-slate-500/20",
+        via: "via-indigo-500/20",
+        to: "to-purple-500/20",
+      },
+    },
+    {
+      id: 3,
+      title: "Preview Add-on — Fear Inside (Report Glimpse)",
+      description:
+        "A small glimpse of the clarity you get: your most important months (next 24), best window for a big decision, love turning point timing, career growth window, risk months to avoid, luck peaks, repeating patterns, and your next reset phase.",
+      features: [
+        "Top months (next 24) preview",
+        "Best window for a big decision",
+        "Love turning point timing",
+        "Career growth window",
+        "Risk months to avoid",
+        "Luck peaks (short windows)",
+        "Repeating pattern insight",
+        "Reset phase guidance",
+      ],
+      price: 0,
+      originalPrice: 499,
+      icon: "👁️",
       color: {
         from: "from-purple-500/20",
         via: "via-pink-500/20",
@@ -69,23 +99,25 @@ function Cart() {
       },
     },
     {
-      id: 3,
-      title: "Discover Your Soul's Purpose",
+      id: 4,
+      title: "Premium Signature Designs (Optional Add-on)",
       description:
-        "Your soul carries a journey, lessons, and unresolved karma. This deep-dive report reveals your true life path and what you must overcome to feel fulfilled and in flow.",
+        "Identity, refined. Clean • bold • professional. Optional add-on with your report — delivered on WhatsApp / Email.",
       features: [
-        "Your core life purpose",
-        "Past life karma & spiritual blocks",
-        "How to break karmic cycles",
-        "Personalized healing path & action steps",
+        "3 premium signature options",
+        "Practice sheet (PDF)",
+        "Signature tutorial guide",
+        "Delivered on WhatsApp / Email",
+        "High-quality design styles",
       ],
-      price: 199,
-      originalPrice: 2499,
-      icon: "🪷",
+      // ✅ Change these prices if you want a different signature pack price
+      price: 499,
+      originalPrice: 1999,
+      icon: "✍️",
       color: {
-        from: "from-emerald-500/20",
-        via: "via-teal-500/20",
-        to: "to-cyan-500/20",
+        from: "from-amber-500/20",
+        via: "via-rose-500/20",
+        to: "to-fuchsia-500/20",
       },
     },
   ];
@@ -110,7 +142,6 @@ function Cart() {
   const handleConsultationFormSubmit = (formData) => {
     setConsultationFormData(formData);
     console.log("Consultation form submitted:", formData);
-    // You can add additional logic here like API calls, validation, etc.
   };
 
   const removeItem = (itemId) => {
@@ -156,38 +187,24 @@ function Cart() {
   };
 
   useEffect(() => {
-    loadScript("https://checkout.razorpay.com/v1/checkout.js").then(
-      (result) => {
-        if (result) {
-          console.log("Razorpay script loaded successfully");
-        }
+    loadScript("https://checkout.razorpay.com/v1/checkout.js").then((result) => {
+      if (result) {
+        console.log("Razorpay script loaded successfully");
       }
-    );
+    });
   }, []);
 
   const handleCheckout = async () => {
-    const additionalProducts = selectedAdditionalProducts.map((product) => product.title);
-    // if (
-    //   consultationFormData?.name === "" ||
-    //   consultationFormData?.email === "" ||
-    //   consultationFormData?.phoneNumber === "" ||
-    //   consultationFormData?.dateOfBirth === "" ||
-    //   consultationFormData?.placeOfBirth === "" ||
-    //   consultationFormData?.gender === "" ||
-    //   consultationFormData?.preferredDateTime === ""
-    // ) {
-    //   alert("Please fill all the fields");
-    //   return;
-    // }
+    const additionalProductsTitles = selectedAdditionalProducts.map(
+      (product) => product.title
+    );
+
     try {
       setIsCheckingOut(true);
 
-      const res = await axios.post(
-        `${BACKEND_URL}/api/payment/razorpay`,
-        {
-          amount: total,
-        }
-      );
+      const res = await axios.post(`${BACKEND_URL}/api/payment/razorpay`, {
+        amount: total,
+      });
 
       const data = res.data.data;
 
@@ -213,9 +230,9 @@ function Cart() {
               gender: consultationFormData?.gender,
               prefferedDateAndTime: consultationFormData?.preferredDateTime,
               orderId: data.orderId,
-              additionalProducts: additionalProducts,
+              additionalProducts: additionalProductsTitles,
             });
-            
+
             navigate("/kundli-order-confirmation", {
               state: {
                 orderId: data.orderId,
@@ -224,7 +241,9 @@ function Cart() {
             });
           } catch (error) {
             console.error("Error creating order:", error);
-            alert("Payment successful but order creation failed. Please contact support.");
+            alert(
+              "Payment successful but order creation failed. Please contact support."
+            );
           }
         },
         prefill: {
@@ -415,7 +434,7 @@ function Cart() {
                 </div>
               </div>
 
-              {/* Desktop Layout - New Design */}
+              {/* Desktop Layout */}
               <div
                 className={`hidden lg:block px-4 transition-all duration-1000 delay-500 transform ${
                   animateElements
@@ -493,7 +512,6 @@ function Cart() {
           )}
 
           <TestimonialsSection />
-
           <ClientTestimonialsSection />
         </div>
       </section>
