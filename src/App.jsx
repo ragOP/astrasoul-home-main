@@ -48,8 +48,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
            <Route path="/consultation" element={<Home />} />
-     <Route path="/kundali" element={<Kundali />} />
-             <Route path="/kundali2" element={<Kundali2 />} />
+     <Route path="/kundli" element={<Kundali />} />
+             {/* <Route path="/kundali2" element={<Kundali2 />} /> */}
                <Route path="/signastro" element={<SignAstro />} />
           <Route path="/consultation" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
@@ -61,7 +61,7 @@ const App = () => (
             element={<LoveOrderConfirmation />}
           />
           <Route path="/record" element={<Record />} />
-              <Route path="/recordkundali" element={<RecordKundali />} />
+              <Route path="/recordkundli" element={<RecordKundali />} />
           <Route path="/raghib" element={<Raghib />} />
           <Route path="/raghib-cart" element={<RaghibCart />} />
 
