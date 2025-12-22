@@ -60,6 +60,7 @@ const App = () => (
             element={<LoveOrderConfirmation />}
           />
           <Route path="/record" element={<Record />} />
+              <Route path="/recordkundali" element={<RecordKundali />} />
           <Route path="/raghib" element={<Raghib />} />
           <Route path="/raghib-cart" element={<RaghibCart />} />
 
