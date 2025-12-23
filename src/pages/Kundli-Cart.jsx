@@ -313,7 +313,7 @@ function Cart() {
           >
             <h1 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold mb-3 sm:mb-4">
               <span className="bg-gradient-to-r from-red-400 via-pink-400 to-purple-400 bg-clip-text text-transparent animate-pulse">
-                Your Cosmic Cart
+                Your  Cart
               </span>
             </h1>
             <p className="text-base sm:text-lg lg:text-xl text-white/70 max-w-2xl mx-auto px-2">

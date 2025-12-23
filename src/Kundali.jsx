@@ -10,6 +10,15 @@ import { motion, useScroll, useSpring, useTransform } from "framer-motion";
  *
  * Install:
  *   npm i framer-motion
+ *
+ * ✅ HERO INLINE IMAGE (after headline)
+ * Put your image here:
+ *   /public/1.png
+ * This component will try "/1.png" first, and if missing, it auto-falls back to a nice Unsplash image.
+ *
+ * ✅ UPDATE REQUEST:
+ * - All CTA buttons renamed to: "Buy Now"
+ * - All CTA links point to: "/kundli-cart"
  */
 
 const easeOut = [0.16, 1, 0.3, 1];
@@ -24,6 +33,9 @@ const TwoYearHoroscopePremium = () => {
   });
 
   const [active, setActive] = useState("home");
+
+  const CTA_LINK = "/kundli-cart";
+  const CTA_TEXT = "Buy Now";
 
   const IMAGES = useMemo(
     () => ({
@@ -49,9 +61,18 @@ const TwoYearHoroscopePremium = () => {
         "https://images.unsplash.com/photo-1516542076529-1ea3854896f2?auto=format&fit=crop&w=1600&q=80",
       sig4:
         "https://images.unsplash.com/photo-1456324504439-367cee3b3c32?auto=format&fit=crop&w=1600&q=80",
+
+      // ✅ Your local public folder image
+      heroInlineLocal: "/1.png",
     }),
     []
   );
+
+  // ✅ Inline hero pic: try /public/1.png first, fallback if missing
+  const [heroInlineSrc, setHeroInlineSrc] = useState("/1.png");
+  useEffect(() => {
+    setHeroInlineSrc(IMAGES.heroInlineLocal || "/1.png");
+  }, [IMAGES.heroInlineLocal]);
 
   useEffect(() => {
     const ids = ["home", "problem", "reveal", "signatures", "preview", "order"];
@@ -102,25 +123,41 @@ const TwoYearHoroscopePremium = () => {
           </a>
 
           <nav className="nav">
-            <a className={active === "problem" ? "navLink active" : "navLink"} href="#problem">
+            <a
+              className={active === "problem" ? "navLink active" : "navLink"}
+              href="#problem"
+            >
               Fear
             </a>
-            <a className={active === "reveal" ? "navLink active" : "navLink"} href="#reveal">
+            <a
+              className={active === "reveal" ? "navLink active" : "navLink"}
+              href="#reveal"
+            >
               Inside
             </a>
-            <a className={active === "signatures" ? "navLink active" : "navLink"} href="#signatures">
+            <a
+              className={active === "signatures" ? "navLink active" : "navLink"}
+              href="#signatures"
+            >
               Signatures
             </a>
-            <a className={active === "preview" ? "navLink active" : "navLink"} href="#preview">
+            <a
+              className={active === "preview" ? "navLink active" : "navLink"}
+              href="#preview"
+            >
               Preview
             </a>
-            <a className={active === "order" ? "navLink active" : "navLink"} href="#order">
+            <a
+              className={active === "order" ? "navLink active" : "navLink"}
+              href="#order"
+            >
               Start
             </a>
           </nav>
 
-          <a className="headerCta" href="#order">
-            Reveal 24 Months
+          {/* ✅ CTA: Buy Now -> /kundli-cart */}
+          <a className="headerCta" href={CTA_LINK}>
+            {CTA_TEXT}
             <span className="headerCtaGlow" />
           </a>
         </div>
@@ -133,12 +170,14 @@ const TwoYearHoroscopePremium = () => {
       {/* ===== HERO ===== */}
       <section id="home" className="hero">
         <motion.div className="heroMedia" style={{ y: heroParallaxY }}>
-          <img className="heroImg" src={IMAGES.hero} alt="Cosmic night sky background" />
+          <img
+            className="heroImg"
+            src={IMAGES.hero}
+            alt="Cosmic night sky background"
+          />
           <div className="heroOverlay" />
           <motion.div className="heroBloom" style={{ opacity: heroGlow }} />
 
-          {/* Top “panel” now has content (so it doesn’t look empty) */}
-      
           {/* bottom curve plate */}
           <div className="heroBottomPlate" aria-hidden="true" />
         </motion.div>
@@ -162,17 +201,37 @@ const TwoYearHoroscopePremium = () => {
               mapped with <span className="accent2">timing windows.</span>
             </h1>
 
+            {/* ✅ HERO PIC right after headline */}
+            <div className="heroInlinePic">
+              <div className="heroInlineFrame">
+                <img
+                  className="heroInlineImg"
+                  src={heroInlineSrc}
+                  alt="24-month timing window preview"
+                  loading="eager"
+                  onError={() => setHeroInlineSrc(IMAGES.constellation)}
+                />
+                <div className="heroInlineShade" />
+                <div className="heroInlineBadge">24-Month Map</div>
+                <div className="heroInlineGlow" aria-hidden="true" />
+              </div>
+            </div>
+
             <p className="sub">
-              Month-by-month phases: when to push, pause, avoid risk, or act — based on your chart timing.
+              Month-by-month phases: when to push, pause, avoid risk, or act —
+              based on your chart timing.
             </p>
 
             <div className="heroActions">
-              <a className="cta" href="#order">
-                Reveal My Next 24 Months
+              {/* ✅ CTA: Buy Now -> /kundli-cart */}
+              <a className="cta" href={CTA_LINK}>
+                {CTA_TEXT}
                 <span className="ctaShine" />
               </a>
-              <a className="cta ghost" href="#reveal">
-                See What’s Inside
+
+              {/* ✅ CTA: Buy Now -> /kundli-cart (ghost) */}
+              <a className="cta ghost" href={CTA_LINK}>
+                {CTA_TEXT}
               </a>
             </div>
 
@@ -259,8 +318,9 @@ const TwoYearHoroscopePremium = () => {
         </motion.div>
 
         <div className="centerCta">
-          <a className="cta" href="#order">
-            Yes — Show My Timing
+          {/* ✅ CTA: Buy Now -> /kundli-cart */}
+          <a className="cta" href={CTA_LINK}>
+            {CTA_TEXT}
             <span className="ctaShine" />
           </a>
         </div>
@@ -295,51 +355,77 @@ const TwoYearHoroscopePremium = () => {
             <RevealCard
               icon="🗓️"
               title="Month-by-Month Timeline"
-              points={["When life opens", "When it slows", "Best action windows", "Risk months"]}
+              points={[
+                "When life opens",
+                "When it slows",
+                "Best action windows",
+                "Risk months",
+              ]}
             />
             <RevealCard
               icon="❤️"
               title="Love Phases"
-              points={["Turning points", "Commitment windows", "Conflict months", "Healing cycles"]}
+              points={[
+                "Turning points",
+                "Commitment windows",
+                "Conflict months",
+                "Healing cycles",
+              ]}
             />
             <RevealCard
               icon="💼"
               title="Career & Money"
-              points={["Growth periods", "Switch timing", "High luck months", "Avoid months"]}
+              points={[
+                "Growth periods",
+                "Switch timing",
+                "High luck months",
+                "Avoid months",
+              ]}
             />
             <RevealCard
               icon="🧿"
               title="Patterns & Blocks"
-              points={["Repeating mistakes", "Why it repeats", "What to change", "What to avoid"]}
+              points={[
+                "Repeating mistakes",
+                "Why it repeats",
+                "What to change",
+                "What to avoid",
+              ]}
             />
             <RevealCard
               icon="⏳"
               title="Destiny Windows"
-              points={["When destiny dominates", "When you can rewrite", "Best timing"]}
+              points={[
+                "When destiny dominates",
+                "When you can rewrite",
+                "Best timing",
+              ]}
             />
             <RevealCard
               icon="🔑"
               title="Simple Remedies"
-              points={["Practical steps", "No drama", "Easy routines", "Personalized suggestions"]}
+              points={[
+                "Practical steps",
+                "No drama",
+                "Easy routines",
+                "Personalized suggestions",
+              ]}
             />
           </div>
         </div>
 
         <div className="centerCta">
-          <a className="cta" href="#preview">
-            Show The Preview
+          {/* ✅ CTA: Buy Now -> /kundli-cart */}
+          <a className="cta" href={CTA_LINK}>
+            {CTA_TEXT}
             <span className="ctaShine" />
           </a>
         </div>
       </section>
 
       {/* ===== PREMIUM SIGNATURES ===== */}
-      <section id="signatures" className="section sectionDark">
-        <SectionHead
-          eyebrow="Bonus add-on"
-          title="Premium Signature Designs"
-          desc="Optional add-on with your report."
-        />
+      {/* <section id="signatures" className="section sectionDark">
+        <SectionHead eyebrow="Bonus add-on" title="Premium Signature Designs" desc="Optional add-on with your report." />
 
         <div className="sigLayout">
           <motion.div
@@ -372,9 +458,7 @@ const TwoYearHoroscopePremium = () => {
                   <img src={src} alt={`Signature example ${i + 1}`} />
                   <div className="sigTileShade" />
                   <div className="sigTileText">
-                    <div className="sigTileTitle">
-                      {i === 0 ? "Minimal" : i === 1 ? "Premium" : "Bold"}
-                    </div>
+                    <div className="sigTileTitle">{i === 0 ? "Minimal" : i === 1 ? "Premium" : "Bold"}</div>
                     <div className="sigTileSub">High-quality design</div>
                   </div>
                 </motion.div>
@@ -397,15 +481,15 @@ const TwoYearHoroscopePremium = () => {
               </ul>
 
               <div className="centerCta leftCta">
-                <a className="cta" href="#order">
-                  Add Signature Pack
+                <a className="cta" href={CTA_LINK}>
+                  {CTA_TEXT}
                   <span className="ctaShine" />
                 </a>
               </div>
             </motion.div>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* ===== PREVIEW ===== */}
       <section id="preview" className="section">
@@ -441,8 +525,9 @@ const TwoYearHoroscopePremium = () => {
         </div>
 
         <div className="centerCta">
-          <a className="cta" href="#order">
-            Get My 2-Year Report
+          {/* ✅ CTA: Buy Now -> /kundli-cart */}
+          <a className="cta" href={CTA_LINK}>
+            {CTA_TEXT}
             <span className="ctaShine" />
           </a>
         </div>
@@ -453,7 +538,7 @@ const TwoYearHoroscopePremium = () => {
         <SectionHead
           eyebrow="Start now"
           title="Unlock your 2-Year Kundali Report"
-          desc="Tap below to start on WhatsApp (fast + private)."
+          desc="Tap below to start (fast + private)."
         />
 
         <div className="orderWrap">
@@ -491,7 +576,8 @@ const TwoYearHoroscopePremium = () => {
             </div>
 
             <div className="priceNote">
-              Includes: month-by-month timeline • love/career/money windows • remedies
+              Includes: month-by-month timeline • love/career/money windows •
+              remedies
             </div>
 
             <div className="orderList">
@@ -501,22 +587,15 @@ const TwoYearHoroscopePremium = () => {
               <OrderLine k="Bonus" v="Signature pack (optional)" />
             </div>
 
-            {/* Replace this with your real WhatsApp / checkout link */}
-            <a
-              className="cta ctaFull"
-              href="#"
-              onClick={(e) => {
-                e.preventDefault();
-                // window.location.href = "https://wa.me/<number>?text=<encoded>";
-                window.scrollTo({ top: 0, behavior: "smooth" });
-              }}
-            >
-              Start on WhatsApp
+            {/* ✅ CTA: Buy Now -> /kundli-cart */}
+            <a className="cta ctaFull" href={CTA_LINK}>
+              {CTA_TEXT}
               <span className="ctaShine" />
             </a>
 
             <div className="finePrint">
-              Disclaimer: Astrology is guidance, not fixed fate. You control your actions.
+              Disclaimer: Astrology is guidance, not fixed fate. You control your
+              actions.
             </div>
           </motion.div>
         </div>
@@ -528,7 +607,17 @@ const TwoYearHoroscopePremium = () => {
           </div>
           <div className="footerText">
             <div className="footerTitle">One report. Two years of clarity.</div>
-            <div className="footerSub">Make better decisions by knowing your timing windows.</div>
+            <div className="footerSub">
+              Make better decisions by knowing your timing windows.
+            </div>
+
+            {/* ✅ CTA: Buy Now -> /kundli-cart */}
+            <div className="centerCta" style={{ marginTop: 14 }}>
+              <a className="cta" href={CTA_LINK}>
+                {CTA_TEXT}
+                <span className="ctaShine" />
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -575,7 +664,6 @@ const RevealCard = ({ icon, title, points }) => (
       <div className="revealTitle">{title}</div>
     </div>
 
-    {/* Center-aligned list (pic 2 fix) */}
     <div className="revealList">
       {points.map((p, i) => (
         <div className="revealPoint" key={i}>
@@ -591,17 +679,6 @@ const OrderLine = ({ k, v }) => (
   <div className="orderLine">
     <span className="orderK">{k}</span>
     <span className="orderV">{v}</span>
-  </div>
-);
-
-const PanelCard = ({ k, v, hint, icon }) => (
-  <div className="panelCard">
-    <div className="panelIcon">{icon}</div>
-    <div className="panelBody">
-      <div className="panelK">{k}</div>
-      <div className="panelV">{v}</div>
-      <div className="panelHint">{hint}</div>
-    </div>
   </div>
 );
 
@@ -841,102 +918,6 @@ const css = `
     pointer-events:none;
   }
 
-  /* TOP PANEL with content */
-  .heroTopPanel{
-    position:absolute;
-    left: 14px; right: 14px;
-    top: 82px;
-    height: 210px;
-    border-radius: 24px;
-    border: 1px solid rgba(255,255,255,.12);
-    background: linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.03));
-    box-shadow: 0 18px 55px rgba(0,0,0,.35);
-    overflow:hidden;
-  }
-  .heroTopPanelStars{
-    position:absolute; inset:0;
-    background:
-      radial-gradient(2px 2px at 10% 25%, rgba(255,255,255,.7), transparent 60%),
-      radial-gradient(2px 2px at 26% 55%, rgba(255,255,255,.55), transparent 60%),
-      radial-gradient(2px 2px at 44% 35%, rgba(255,255,255,.55), transparent 60%),
-      radial-gradient(2px 2px at 70% 40%, rgba(255,255,255,.6), transparent 60%),
-      radial-gradient(2px 2px at 84% 65%, rgba(255,255,255,.55), transparent 60%),
-      radial-gradient(2px 2px at 92% 30%, rgba(255,255,255,.65), transparent 60%),
-      linear-gradient(90deg, rgba(184,140,255,.20), rgba(109,228,255,.12), rgba(246,215,125,.10));
-    opacity:.95;
-  }
-  .heroPanelInner{
-    position:absolute; inset:0;
-    padding: 14px 14px;
-    display:flex;
-    flex-direction:column;
-    gap: 10px;
-    backdrop-filter: blur(8px);
-  }
-  .heroPanelHead{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap: 10px;
-  }
-  .heroPanelTitle{
-    font-weight: 950;
-    letter-spacing: -.2px;
-    font-size: 14px;
-    color: rgba(255,255,255,.92);
-  }
-  .heroPanelPill{
-    font-size: 12px;
-    font-weight: 900;
-    padding: 8px 10px;
-    border-radius: 999px;
-    border: 1px solid rgba(255,255,255,.12);
-    background: rgba(0,0,0,.18);
-    color: rgba(255,255,255,.86);
-  }
-  .heroPanelGrid{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-  }
-  .panelCard{
-    display:flex;
-    align-items:flex-start;
-    gap: 10px;
-    padding: 10px 10px;
-    border-radius: 18px;
-    border: 1px solid rgba(255,255,255,.12);
-    background: rgba(0,0,0,.18);
-  }
-  .panelIcon{
-    width: 34px; height: 34px;
-    border-radius: 14px;
-    display:flex; align-items:center; justify-content:center;
-    border: 1px solid rgba(255,255,255,.12);
-    background: rgba(255,255,255,.06);
-    font-weight: 950;
-  }
-  .panelK{ font-size: 12px; color: rgba(255,255,255,.76); font-weight: 900; letter-spacing:.02em; }
-  .panelV{ margin-top: 2px; font-size: 13px; font-weight: 950; color: rgba(255,255,255,.92); }
-  .panelHint{ margin-top: 2px; font-size: 12px; color: rgba(255,255,255,.60); }
-
-  .heroPanelFooter{
-    margin-top: 2px;
-    display:flex;
-    align-items:center;
-    gap: 10px;
-  }
-  .hpDot{
-    width:7px; height:7px; border-radius:999px;
-    background: linear-gradient(90deg, rgba(246,215,125,.95), rgba(109,228,255,.95));
-    box-shadow: 0 0 18px rgba(246,215,125,.25);
-  }
-  .hpText{
-    font-size: 12px;
-    color: rgba(255,255,255,.68);
-    line-height: 1.35;
-  }
-
   .heroBottomPlate{
     position:absolute;
     left: 14px; right: 14px;
@@ -956,14 +937,12 @@ const css = `
     gap: 14px;
   }
 
-  /* moved UP a bit so hero doesn't feel empty */
   .heroCard{
     margin-top: 80px;
     background: linear-gradient(180deg, rgba(12,16,34,.78), rgba(10,14,31,.62));
     border: 1px solid rgba(255,255,255,.12);
     border-radius: var(--radius);
     padding: 16px 14px;
-  
     backdrop-filter: blur(16px);
   }
 
@@ -995,6 +974,62 @@ const css = `
     background-clip:text;
     color: transparent;
   }
+
+  /* ✅ HERO INLINE PIC */
+  .heroInlinePic{
+    margin-top: 12px;
+  }
+  .heroInlineFrame{
+    position:relative;
+    overflow:hidden;
+    border-radius: 22px;
+    border: 1px solid rgba(255,255,255,.12);
+    background: rgba(255,255,255,.04);
+    box-shadow: 0 14px 38px rgba(0,0,0,.28);
+    height: 168px;
+  }
+  .heroInlineImg{
+    width:100%;
+    height:100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    filter: saturate(1.12) contrast(1.05);
+  }
+  .heroInlineShade{
+    position:absolute; inset:0;
+    background:
+      radial-gradient(260px 120px at 22% 20%, rgba(246,215,125,.14), transparent 70%),
+      radial-gradient(260px 140px at 78% 30%, rgba(109,228,255,.12), transparent 72%),
+      linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.48));
+    pointer-events:none;
+  }
+  .heroInlineBadge{
+    position:absolute;
+    left: 12px; top: 12px;
+    font-weight: 950;
+    font-size: 12px;
+    letter-spacing: .02em;
+    padding: 8px 10px;
+    border-radius: 999px;
+    color: rgba(0,0,0,.92);
+    background: linear-gradient(90deg, rgba(246,215,125,.96), rgba(184,140,255,.88));
+    box-shadow: 0 12px 26px rgba(0,0,0,.25);
+  }
+  .heroInlineGlow{
+    position:absolute; inset:-50px;
+    background:
+      radial-gradient(200px 90px at 20% 50%, rgba(255,255,255,.25), transparent 65%),
+      radial-gradient(200px 90px at 78% 55%, rgba(255,255,255,.18), transparent 68%);
+    filter: blur(10px);
+    opacity:.35;
+    animation: inlineGlow 5.2s ease-in-out infinite;
+    pointer-events:none;
+  }
+  @keyframes inlineGlow{
+    0%,100%{transform: translate3d(0,0,0)}
+    50%{transform: translate3d(18px,-10px,0)}
+  }
+
   .sub{
     margin: 10px 0 0;
     color: var(--muted);
@@ -1106,7 +1141,6 @@ const css = `
   @media(min-width: 980px){
     .hero{padding: 28px 16px 40px}
     .heroMedia{height: 600px}
-    .heroTopPanel{top: 92px; height: 240px}
     .heroContent{
       grid-template-columns: 1.1fr .9fr;
       align-items: start;
@@ -1114,6 +1148,7 @@ const css = `
     }
     .heroCard{margin-top: 360px; padding: 18px 16px}
     .h1{font-size: 44px}
+    .heroInlineFrame{height: 190px}
     .sub{font-size: 15.5px}
     .heroActions{flex-direction: row}
     .heroSide{display:block; margin-top: 360px}
@@ -1246,7 +1281,6 @@ const css = `
     gap: 10px;
   }
 
-  /* PIC 2 FIX: cards centered + text centered */
   .revealCard{
     padding: 14px 14px;
     border-radius: 20px;
@@ -1303,61 +1337,6 @@ const css = `
     .revealCard{text-align:left}
     .revealTop{justify-content:flex-start}
     .revealList{align-items:flex-start}
-  }
-
-  /* Signatures */
-  .sigLayout{
-    display:grid;
-    grid-template-columns: 1fr;
-    gap: 14px;
-    margin-top: 14px;
-  }
-  .sigPoster{
-    position:relative;
-    overflow:hidden;
-    border-radius: var(--radius);
-    border: 1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.03);
-    box-shadow: var(--shadow2);
-    height: 260px;
-  }
-  .sigPoster img{width:100%; height:100%; object-fit:cover; filter:saturate(1.1) contrast(1.02)}
-  .sigRight{display:flex; flex-direction:column; gap: 12px}
-  .sigGrid{ display:grid; grid-template-columns: 1fr; gap: 10px; }
-  .sigTile{
-    position:relative;
-    border-radius: 20px;
-    border: 1px solid rgba(255,255,255,.10);
-    overflow:hidden;
-    background: rgba(255,255,255,.03);
-    height: 160px;
-    box-shadow: 0 14px 38px rgba(0,0,0,.25);
-  }
-  .sigTile img{width:100%; height:100%; object-fit:cover}
-  .sigTileShade{ position:absolute; inset:0; background: linear-gradient(180deg, rgba(0,0,0,.10), rgba(0,0,0,.78)); }
-  .sigTileText{ position:absolute; left:12px; bottom:12px; right:12px; }
-  .sigTileTitle{font-weight:950}
-  .sigTileSub{margin-top:3px; font-size:12.5px; color: rgba(255,255,255,.72)}
-  .sigBullets{
-    padding: 14px 14px;
-    border-radius: 22px;
-    border: 1px solid rgba(255,255,255,.10);
-    background: rgba(255,255,255,.04);
-  }
-  .sigBulletsTitle{font-weight:950; font-size:15px}
-  .sigList{
-    margin: 10px 0 0;
-    padding: 0 0 0 18px;
-    color: rgba(255,255,255,.72);
-    font-size: 14px;
-    line-height: 1.6;
-  }
-  .sigList li{margin: 6px 0}
-  @media(min-width: 980px){
-    .sigLayout{grid-template-columns: .9fr 1.1fr; gap: 16px}
-    .sigPoster{height: 520px}
-    .sigGrid{grid-template-columns: 1fr 1fr; gap: 12px}
-    .sigTile{height: 180px}
   }
 
   /* Preview */
