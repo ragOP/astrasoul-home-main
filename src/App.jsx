@@ -37,6 +37,7 @@ import SignAstro from "./SignAstro";
 import Minimal from "./Minimal";
 import RecordKundali from "./pages/RecordKundali";
 import OrderConfirmationBracelet from "./pages/OrderConfirmationBracelet";
+import WealthPage from "./Wealth";
 
 
 const queryClient = new QueryClient();
@@ -48,7 +49,9 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+           <Route path="/wealth" element={<WealthPage />} />
           <Route path="/" element={<Index />} />
+
            <Route path="/consultation" element={<Home />} />
      <Route path="/kundli" element={<Kundali />} />
              {/* <Route path="/kundali2" element={<Kundali2 />} /> */}
