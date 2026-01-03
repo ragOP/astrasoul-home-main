@@ -15,6 +15,7 @@ import KundliCart from "./pages/Kundli-Cart";
 import "./App.css";
 import OrderConfirmation from "./pages/OrderConfirmation";
 import Record from "./pages/Record";
+import RecordBracelet from "./pages/RecordBracelet";
 import LoveSection from "./pages/LoveSection";
 import NewLove from "./pages/NewLove";
 import LoveCart from "./pages/LoveCart";
@@ -35,6 +36,7 @@ import New from "./New";
 import SignAstro from "./SignAstro";
 import Minimal from "./Minimal";
 import RecordKundali from "./pages/RecordKundali";
+import OrderConfirmationBracelet from "./pages/OrderConfirmationBracelet";
 
 
 const queryClient = new QueryClient();
@@ -55,12 +57,14 @@ const App = () => (
           <Route path="/cart" element={<Cart />} />
           <Route path="/cart-2" element={<LoveCart />} />
           <Route path="/order-confirmation" element={<OrderConfirmation />} />
+                <Route path="/order-confirmationbracelet" element={<OrderConfirmationBracelet />} />
           <Route path="/kundli-order-confirmation" element={<KundliConfirmation />} />
           <Route
             path="/order-confirmation-2"
             element={<LoveOrderConfirmation />}
           />
           <Route path="/record" element={<Record />} />
+                  <Route path="/record" element={<RecordBracelet />} />
               <Route path="/recordkundli" element={<RecordKundali />} />
           <Route path="/bracelet" element={<Raghib />} />
           <Route path="/bracelet-cart" element={<RaghibCart />} />

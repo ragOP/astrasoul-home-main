@@ -97,7 +97,7 @@ const Raghib = () => {
                 Get Yours
               </a>
               <button
-                onClick={() => navigate("/raghib-cart")}
+                onClick={() => navigate("/bracelet-cart")}
                 className="ml-2 inline-flex items-center rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-500 px-5 py-2.5 text-white font-semibold shadow-[0_10px_30px_rgba(168,85,247,0.4)] hover:shadow-[0_15px_35px_rgba(168,85,247,0.6)] transition-all duration-300 transform hover:scale-105"
               >
                 Get My Bracelet
@@ -147,7 +147,7 @@ const Raghib = () => {
                 </a>
                 <button
                   className="mt-2 w-full inline-flex items-center justify-center rounded-xl bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-500 px-5 py-3 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
-                  onClick={() => navigate("/raghib-cart")}
+                  onClick={() => navigate("/bracelet-cart")}
                 >
                   Get My Bracelet
                 </button>
@@ -407,7 +407,7 @@ const Raghib = () => {
               {/* Enhanced CTA Button */}
               <button
                 className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-500 text-white text-xl px-8 py-5 rounded-2xl shadow-[0_10px_40px_rgba(168,85,247,0.4)] transition-all duration-500 hover:scale-[1.02] hover:shadow-[0_15px_60px_rgba(168,85,247,0.6)] font-bold relative overflow-hidden group mb-6"
-                onClick={() => navigate("/raghib-cart")}
+                onClick={() => navigate("/bracelet-cart")}
               >
                 <span className="absolute inset-0 bg-gradient-to-r from-yellow-500 via-pink-600 to-purple-600 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></span>
                 <span
@@ -496,7 +496,7 @@ const Raghib = () => {
           {/* Enhanced Mobile Bento */}
           <div className="lg:hidden px-4">
             <button
-              onClick={() => navigate("/raghib-cart")}
+              onClick={() => navigate("/bracelet-cart")}
               className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-500 text-white text-lg px-6 py-4 rounded-2xl shadow-[0_10px_40px_rgba(168,85,247,0.4)] font-bold mb-4 hover:shadow-[0_15px_60px_rgba(168,85,247,0.6)] transition-all duration-300 active:scale-95"
               style={{ fontFamily: "'Poppins', sans-serif" }}
             >
@@ -600,7 +600,7 @@ const Raghib = () => {
                     ₹799
                   </p>
                   <button
-                    onClick={() => navigate("/raghib-cart")}
+                    onClick={() => navigate("/bracelet-cart")}
                     className="w-full bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-500 text-white text-lg px-6 py-4 rounded-2xl shadow-[0_10px_40px_rgba(168,85,247,0.4)] font-bold mb-4 active:scale-95 transition-transform duration-200"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
@@ -1368,7 +1368,7 @@ const Raghib = () => {
               <button
                 className="bg-gradient-to-r from-purple-600 via-pink-600 to-yellow-500 text-white text-xl px-12 py-6 rounded-xl shadow-2xl transition-all duration-300 transform hover:scale-105"
                 style={{ fontFamily: "'Montserrat', sans-serif" }}
-                onClick={() => navigate("/raghib-cart")}
+                onClick={() => navigate("/bracelet-cart")}
               >
                 <span className="flex items-center justify-center space-x-2">
                   <Gift className="w-6 h-6" />
@@ -1473,7 +1473,7 @@ const Raghib = () => {
             <button
               className="bg-white text-purple-900 hover:bg-gray-100 px-12 py-4 rounded-xl font-bold text-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
-              onClick={() => navigate("/raghib-cart")}
+              onClick={() => navigate("/bracelet-cart")}
             >
               🛒 Claim Yours Before the Offer Ends
             </button>
