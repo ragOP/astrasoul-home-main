@@ -62,8 +62,8 @@ const App = () => (
           />
           <Route path="/record" element={<Record />} />
               <Route path="/recordkundli" element={<RecordKundali />} />
-          <Route path="/raghib" element={<Raghib />} />
-          <Route path="/raghib-cart" element={<RaghibCart />} />
+          <Route path="/bracelet" element={<Raghib />} />
+          <Route path="/bracelet-cart" element={<RaghibCart />} />
 
           <Route path="/love-record" element={<LoveRecord />} />
           {/* <Route path="/love" element={<LoveSection />} /> */}
