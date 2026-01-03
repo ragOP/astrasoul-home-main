@@ -64,7 +64,7 @@ const App = () => (
             element={<LoveOrderConfirmation />}
           />
           <Route path="/record" element={<Record />} />
-                  <Route path="/record" element={<RecordBracelet />} />
+                  <Route path="/record-bracelet" element={<RecordBracelet />} />
               <Route path="/recordkundli" element={<RecordKundali />} />
           <Route path="/bracelet" element={<Raghib />} />
           <Route path="/bracelet-cart" element={<RaghibCart />} />
