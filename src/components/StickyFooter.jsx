@@ -48,7 +48,7 @@ function StickyFooter() {
               {/* Pricing */}
               <div className="flex items-center space-x-1 ml-2">
                 <span className="text-red-300/60 line-through text-xs">₹9999</span>
-                <span className="text-white font-bold text-base">₹1499</span>
+                <span className="text-white font-bold text-base">₹999</span>
               </div>
             </div>
 
@@ -85,7 +85,7 @@ function StickyFooter() {
           {/* Center - Pricing */}
           <div className="flex items-center space-x-2">
             <span className="text-red-300/60 line-through text-base">₹9999</span>
-            <span className="text-white font-bold text-xl">₹1499</span>
+            <span className="text-white font-bold text-xl">₹999</span>
           </div>
 
           {/* Right Side - CTA Button */}

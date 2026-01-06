@@ -30,7 +30,7 @@ const PricingCard = () => (
     <div className="relative bg-gradient-to-r from-red-500/20 to-pink-500/20 rounded-2xl p-8 sm:p-10 border border-red-400/50 shadow-2xl">
       <div className="text-center space-y-4">
         <h3 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white">
-          1-Hour Booking Window — Only ₹1499
+          1-Hour Booking Window — Only ₹999
         </h3>
         <div className="flex items-center justify-center space-x-3">
           <p className="text-white/60 text-lg sm:text-xl font-semibold line-through">

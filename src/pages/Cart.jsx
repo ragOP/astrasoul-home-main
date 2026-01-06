@@ -20,7 +20,7 @@ function Cart() {
       name: "Premium Astro Consultation",
       description:
         "1-on-1 personalized consultation with India's top astro-numerology expert",
-      price: 1499,
+      price: 999,
       originalPrice: 9999,
       duration: "45 minutes",
       features: [

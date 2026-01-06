@@ -20,7 +20,7 @@ function Cart() {
       name: "2-Year Kundali Report — Timing Windows (24 Months)",
       description:
         "Your next 24 months — mapped with timing windows. Month-by-month phases: when to push, pause, avoid risk, or act — based on your chart timing.",
-      price: 1499,
+      price: 999,
       originalPrice: 9999,
       duration: "45 minutes",
       features: [
