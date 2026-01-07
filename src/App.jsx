@@ -6,6 +6,10 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Home from "./pages/Home";
+import Terms from "./pages/Terms";
+import Contact from "./pages/Contact";
+import Refund from "./pages/Refund";
+
 
 
 
@@ -86,6 +90,9 @@ const App = () => (
           <Route path="/fortune-report" element={<FortuneReport />} />
           <Route path="/kundli-cart" element={<KundliCart />} />
           <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
+                  <Route path="/contact" element={<Contact />} />
+                        <Route path="/refund" element={<Refund />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

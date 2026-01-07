@@ -4,11 +4,11 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   const links = [
-    { label: "About Us", href: "#" },
-    { label: "Contact Support", href: "#" },
-    { label: "Privacy Policy", href: "#" },
-    { label: "Refund Policy", href: "#" },
-    { label: "Terms of Service", href: "#" },
+   
+    { label: "Contact Support", href: "./contact" },
+    { label: "Privacy Policy", href: "./privacy" },
+    { label: "Refund Policy", href: "./refund" },
+    { label: "Terms of Service", href: "./terms" },
   ];
   
   return (
