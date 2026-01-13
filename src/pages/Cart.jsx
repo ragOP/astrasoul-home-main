@@ -17,7 +17,7 @@ function Cart() {
   const [cartItems, setCartItems] = useState([
     {
       id: 1,
-      name: "Premium Astro Consultation",
+      name: "Premium Astro Consultations",
       description:
         "1-on-1 personalized consultation with India's top astro-numerology expert",
       price: 999,
