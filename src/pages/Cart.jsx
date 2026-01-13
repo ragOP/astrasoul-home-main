@@ -20,8 +20,8 @@ function Cart() {
       name: "Premium Astro Consultations",
       description:
         "1-on-1 personalized consultation with India's top astro-numerology expert",
-      price: 999,
-      originalPrice: 9999,
+      price: 2,
+      originalPrice: 29,
       duration: "45 minutes",
       features: [
         "Personalized birth chart analysis",
@@ -60,7 +60,7 @@ function Cart() {
         "Based 100% on your birth chart",
       ],
       price: 199,
-      originalPrice: 2999,
+      originalPrice: 22,
       icon: "🔮",
       color: {
         from: "from-purple-500/20",
