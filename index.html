@@ -3,54 +3,82 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <title>AstraSoul Digital | Personalized Astrology & Spiritual Insights</title>
-    <meta name="description" content="Discover personalized astrology readings, soulmate sketches, wealth insights, and emotional clarity reports. Experience ancient wisdom for the modern soul. Made for India." />
+    <meta
+      name="description"
+      content="Discover personalized astrology readings, soulmate sketches, wealth insights, and emotional clarity reports. Experience ancient wisdom for the modern soul. Made for India."
+    />
     <meta name="author" content="AstraSoul Digital" />
-    <meta name="keywords" content="astrology, soulmate sketch, birth chart, numerology, wealth report, Indian astrology, vedic astrology, spiritual guidance, self-discovery" />
+    <meta
+      name="keywords"
+      content="astrology, soulmate sketch, birth chart, numerology, wealth report, Indian astrology, vedic astrology, spiritual guidance, self-discovery"
+    />
     <link rel="canonical" href="https://astrasoul.digital" />
 
     <meta property="og:title" content="AstraSoul Digital | Personalized Astrology & Spiritual Insights" />
-    <meta property="og:description" content="Discover what the universe already knows about you. Personalized astrology, soulmate insights, inner healing & life-guidance — crafted uniquely for you." />
+    <meta
+      property="og:description"
+      content="Discover what the universe already knows about you. Personalized astrology, soulmate insights, inner healing & life-guidance — crafted uniquely for you."
+    />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://astrasoul.digital" />
     <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="AstraSoul Digital | Personalized Astrology & Spiritual Insights" />
-    <meta name="twitter:description" content="Discover what the universe already knows about you. Personalized astrology, soulmate insights & life-guidance." />
+    <meta
+      name="twitter:description"
+      content="Discover what the universe already knows about you. Personalized astrology, soulmate insights & life-guidance."
+    />
     <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "AstraSoul Digital",
-      "description": "Modern spiritual platform offering personalized digital experiences from soulmate sketches to wealth insights.",
-      "url": "https://astrasoul.digital"
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AstraSoul Digital",
+        "description": "Modern spiritual platform offering personalized digital experiences from soulmate sketches to wealth insights.",
+        "url": "https://astrasoul.digital"
+      }
     </script>
 
-<!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1443836560683587');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1443836560683587&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-    
+    <!-- Meta Pixel Code (script can stay in HEAD) -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      fbq("init", "1443836560683587");
+      fbq("track", "PageView");
+    </script>
+    <!-- End Meta Pixel Code -->
   </head>
 
   <body>
+    <!-- Meta Pixel Noscript MUST be in BODY -->
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1443836560683587&ev=PageView&noscript=1"
+        alt=""
+      />
+    </noscript>
+
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
