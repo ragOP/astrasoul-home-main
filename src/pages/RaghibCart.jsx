@@ -20,7 +20,7 @@ function Cart() {
     name: "Love & Money Attractor Bracelet",
     description:
       "Astrologer-charged bracelet crafted with Rose Quartz & Pyrite to attract love, harmony, wealth, and financial opportunities.",
-    price: 799,
+    price: 2,
     originalPrice: 2799, // bracelet + free report value
     duration: "Wear daily for best results",
     features: [
