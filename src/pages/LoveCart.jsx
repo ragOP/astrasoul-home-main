@@ -179,7 +179,7 @@ function LoveCart() {
       setIsCheckingOut(true);
 
       const res = await axios.post(
-        `${BACKEND_URL}/api/payment/razorpay`,
+        `${BACKEND_URL}/api/payment2/razorpay`,
         {
           amount: total,
         }
