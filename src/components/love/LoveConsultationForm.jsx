@@ -120,7 +120,7 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
           {/* Gender */}
           <div>
             <label className="block text-sm font-medium text-gray-700 love-font-poppins mb-2">
-              <Female className="w-4 h-4 inline mr-2 text-rose-500" />
+              {/* <Female className="w-4 h-4 inline mr-2 text-rose-500" /> */}
               Gender *
             </label>
             <select
