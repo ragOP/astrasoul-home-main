@@ -15,6 +15,7 @@ import Refund from "./pages/Refund";
 
 
 import Cart from "./pages/Cart";
+import WealthCart from "./pages/WealthCart";
 import KundliCart from "./pages/Kundli-Cart";
 import "./App.css";
 import OrderConfirmation from "./pages/OrderConfirmation";
@@ -62,6 +63,7 @@ const App = () => (
                <Route path="/signastro" element={<SignAstro />} />
           <Route path="/consultation" element={<Home />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/wealth-cart" element={<WealthCart />} />
           <Route path="/cart-2" element={<LoveCart />} />
           <Route path="/order-confirmationlove" element={<OrderConfirmation />} />
                 <Route path="/order-confirmationbracelet" element={<OrderConfirmationBracelet />} />
