@@ -179,13 +179,13 @@ function Cart() {
     //   consultationFormData?.gender === "" ||
     //   consultationFormData?.preferredDateTime === ""
     // ) {
-    //   alert("Please fill all the fields");
+  //   alert("Please fill all the fields");
     //   return;
     // }
     try {
       setIsCheckingOut(true);
 
-      const res = await axios.post(`${BACKEND_URL}/api/payment/razorpay`, {
+      const res = await axios.post(`${BACKEND_URL}/api/payment2/razorpay`, {
         amount: total,
       });
 
