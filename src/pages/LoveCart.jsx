@@ -22,7 +22,7 @@ function LoveCart() {
       name: "Love & Relationship Report",
       description:
         "Personalized Love & Relationship Report based on Vedic astrology & numerology",
-      price: 2,
+      price: 499,
       originalPrice: 999,
       duration: "48-72 hours",
       features: [
