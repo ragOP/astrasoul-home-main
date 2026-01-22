@@ -45,6 +45,7 @@ import OrderConfirmationBracelet from "./pages/OrderConfirmationBracelet";
 import WealthPage from "./Wealth";
 import OrderConfirmationWealth from "./pages/OrderConfirmationWealth";
 import RecordWealth from "./pages/RecordWealth";
+import OrderConfirmationMain from "./pages/OrderConfirmationMain";
 
 const queryClient = new QueryClient();
 
@@ -67,7 +68,8 @@ const App = () => (
           <Route path="/wealth-cart" element={<WealthCart />} />
           <Route path="/record-wealth" element={<RecordWealth />} />
           <Route path="/cart-2" element={<LoveCart />} />
-          <Route path="/order-confirmationlove" element={<OrderConfirmation />} />
+         
+          <Route path="/order-confirmation" element={<OrderConfirmationMain />} />
            <Route path="/order-confirmationwealth" element={<OrderConfirmationWealth />} />
                 <Route path="/order-confirmationbracelet" element={<OrderConfirmationBracelet />} />
           <Route path="/kundli-order-confirmation" element={<KundliConfirmation />} />
