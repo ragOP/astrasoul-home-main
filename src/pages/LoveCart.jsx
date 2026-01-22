@@ -188,7 +188,7 @@ function LoveCart() {
       const data = res.data.data;
 
       const options = {
-        key: import.meta.env.VITE_RAZORPAY_KEY,
+        key: import.meta.env.VITE_RAZORPAY_KEY_2,
         amount: total,
         currency: "INR",
         name: "AstraSoul",
