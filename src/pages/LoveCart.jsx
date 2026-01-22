@@ -212,7 +212,7 @@ function LoveCart() {
               additionalProducts: additionalProducts,
             });
 
-            navigate("/order-confirmationlove", {
+            navigate("/order-confirmation", {
               state: {
                 orderId: data.orderId,
                 amount: total,
