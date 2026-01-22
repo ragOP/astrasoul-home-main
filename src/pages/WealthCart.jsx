@@ -20,7 +20,7 @@ function WealthCart() {
       name: "AstraSoul Wealth Report",
       description:
         "1-on-1 personalized consultation with India's top astro-numerology expert",
-      price: 3,
+      price: 499,
       originalPrice: 9999,
       duration: "45 minutes",
       features: [
