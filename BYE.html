@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>Cash Rewards</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html { font-size: 14px; }
+
+    body {
+      background: linear-gradient(to bottom, white, #f9fafb);
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .rg-alert {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      width: calc(100% - 2rem);
+      max-width: 20rem;
+      animation: rg-slideDown 0.5s ease-out;
+      border: 1px solid #e5e7eb;
+      z-index: 50;
+      font-size: 0.875rem;
+      display: none;
+    }
+
+    @keyframes rg-slideDown {
+      from { transform: translate(-50%, -100%); opacity: 0; }
+      to { transform: translate(-50%, 0); opacity: 1; }
+    }
+
+    .rg-alert-icon {
+      color: #00D72E;
+      font-size: 1.5rem;
+      flex-shrink: 0;
+    }
+
+    .rg-main {
+      width: 100%;
+      max-width: 24rem;
+      padding: 1rem;
+      margin: 0 auto;
+      padding-bottom: 8rem;
+      animation: rg-scaleIn 0.5s ease-out;
+      zoom: 1.1;
+    }
+
+    @keyframes rg-scaleIn {
+      from { transform: scale(0.98); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .rg-timer {
+      background: #22c55e;
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 0.5rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      margin: 1rem 0;
+      font-size: 0.875rem;
+    }
+
+    .rg-card {
+      background: white;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      margin: 1rem 0;
+      animation: rg-fadeUp 0.5s ease-out backwards;
+    }
+
+    @keyframes rg-fadeUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .rg-card h2 {
+      font-size: 1rem;
+      color: #1f2937;
+      margin-bottom: 1rem;
+    }
+
+    .rg-check {
+      background: #f9fafb;
+      padding: 0.75rem;
+      border-radius: 0.5rem;
+      margin: 0.5rem 0;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .rg-check-circle {
+      width: 1.5rem;
+      height: 1.5rem;
+      background: #22c55e;
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: bold;
+    }
+
+    .rg-check-title {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: #1f2937;
+    }
+
+    .rg-check-sub {
+      font-size: 0.75rem;
+      color: #22c55e;
+    }
+
+    .rg-faq {
+      background: #f9fafb;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      margin: 0.5rem 0;
+    }
+
+    .rg-faq-q {
+      font-size: 0.813rem;
+      font-weight: 600;
+      color: #22c55e;
+    }
+
+    .rg-faq-a {
+      font-size: 0.75rem;
+      color: #4b5563;
+    }
+
+    .rg-img {
+      width: 100%;
+      border-radius: 0.5rem;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+
+    .rg-cta {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #22c55e;
+      color: white;
+      padding: 0.875rem 2rem;
+      border-radius: 9999px;
+      font-weight: bold;
+      font-size: 1rem;
+      width: calc(100% - 2rem);
+      max-width: 24rem;
+      border: none;
+      cursor: pointer;
+      animation: rg-pulse 2s infinite;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.5rem;
+      z-index: 40;
+    }
+
+    @keyframes rg-pulse {
+      0% { transform: translateX(-50%) scale(1); }
+      50% { transform: translateX(-50%) scale(1.02); }
+      100% { transform: translateX(-50%) scale(1); }
+    }
+
+    .rg-ripple {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 9999px;
+      background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+      animation: rg-ripple 2s infinite;
+    }
+
+    @keyframes rg-ripple {
+      0% { opacity: 0; transform: scale(0.8); }
+      50% { opacity: 0.2; }
+      100% { opacity: 0; transform: scale(1.5); }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div id="rgNameAlert" class="rg-alert">
+    <div class="rg-alert-icon">💵</div>
+    <div><span class="rg-name"></span> just received bonus!</div>
+  </div>
+
+  <div class="rg-main">
+    <br><br>
+    <img src="lander22.png" class="rg-img">
+
+    <div class="rg-timer">⏰ <span id="rgTimer">29:59</span></div>
+
+    <div class="rg-card">
+      <h2>Quick Start Guide →</h2>
+
+      <div class="rg-check">
+        <div class="rg-check-circle">✓</div>
+        <div>
+          <div class="rg-check-title">Complete 2-3 required deals</div>
+          <div class="rg-check-sub">Earn good bonuses</div>
+        </div>
+      </div>
+
+      <div class="rg-check">
+        <div class="rg-check-circle">✓</div>
+        <div>
+          <div class="rg-check-title">Provide a valid email address</div>
+          <div class="rg-check-sub">For instant notification</div>
+        </div>
+      </div>
+
+      <div class="rg-check">
+        <div class="rg-check-circle">✓</div>
+        <div>
+          <div class="rg-check-title">Ensure you are 18 years or older</div>
+          <div class="rg-check-sub">Required</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="rg-card">
+      <h2>Common Questions →</h2>
+
+      <div class="rg-faq">
+        <div class="rg-faq-q">How long do the deals take?</div>
+        <div class="rg-faq-a">Quick 10-20 minute completion time per deal</div>
+      </div>
+
+      <div class="rg-faq">
+        <div class="rg-faq-q">What are deals?</div>
+        <div class="rg-faq-a">Simple tasks like app installs, surveys or trials</div>
+      </div>
+
+      <div class="rg-faq">
+        <div class="rg-faq-q">How many deals do I need?</div>
+        <div class="rg-faq-a">Complete as many as you want</div>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://blog.doordash.com/en-us/post/exclusive-miami-restaurants-you-can-reserve-through-doordash" target="_blank">
+    <button class="rg-cta">
+      Start Earning Now →
+      <div class="rg-ripple"></div>
+    </button>
+  </a>
+
+  <script>
+    const rgNames = [
+      'James R.','Michael T.','William K.','Benjamin L.','Daniel M.',
+      'Matthew S.','Joseph B.','Andrew C.','David H.','Christopher J.',
+      'Joshua P.','Ryan D.','John W.','Nicholas G.','Anthony F.',
+      'Thomas A.','Samuel N.','Jonathan E.','Jacob V.','Zachary O.'
+    ];
+
+    function rgUpdateTimer() {
+      const el = document.getElementById('rgTimer');
+      let [m,s] = el.textContent.split(':').map(Number);
+      if (s > 0) s--; else if (m > 0) { m--; s = 59; }
+      el.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+    }
+
+    setInterval(rgUpdateTimer, 1000);
+
+    function rgShowNameAlert() {
+      const alert = document.getElementById('rgNameAlert');
+      alert.querySelector('.rg-name').textContent =
+        rgNames[Math.floor(Math.random()*rgNames.length)];
+      alert.style.display = 'flex';
+      setTimeout(() => alert.style.display = 'none', 3000);
+    }
+
+    if (window.innerHeight > 600) {
+      setTimeout(rgShowNameAlert, 2000);
+      setInterval(rgShowNameAlert, 5000);
+    }
+  </script>
+
+</body>
+</html>

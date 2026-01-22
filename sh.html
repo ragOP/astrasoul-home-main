@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,viewport-fit=cover"
+    />
+    <title>Mobile Money</title>
+
+    <!-- ✅ Meta Pixel Code (as you provided) -->
+    <!-- Meta Pixel Code -->
+    <script>
+      !(function (f, b, e, v, n, t, s) {
+        if (f.fbq) return;
+        n = f.fbq = function () {
+          n.callMethod
+            ? n.callMethod.apply(n, arguments)
+            : n.queue.push(arguments);
+        };
+        if (!f._fbq) f._fbq = n;
+        n.push = n;
+        n.loaded = !0;
+        n.version = "2.0";
+        n.queue = [];
+        t = b.createElement(e);
+        t.async = !0;
+        t.src = v;
+        s = b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t, s);
+      })(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
+      fbq("init", "1613596462978919");
+      fbq("track", "PageView");
+    </script>
+    <noscript>
+      <img
+        height="1"
+        width="1"
+        style="display: none"
+        src="https://www.facebook.com/tr?id=1613596462978919&ev=PageView&noscript=1"
+      />
+    </noscript>
+    <!-- End Meta Pixel Code -->
+
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #0b1420 !important;
+        color: #0b1b12;
+        font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial,
+          sans-serif;
+        line-height: 1.45;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        background: #0b1420;
+        z-index: -1;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      .wrap {
+        max-width: 720px;
+        margin: 0 auto;
+        padding: 16px;
+      }
+
+      @media (min-width: 768px) {
+        .wrap {
+          padding: 24px;
+        }
+      }
+
+      .card {
+        background: #0f1c2a;
+        border: 1px solid #152636;
+        border-radius: 16px;
+        padding: 18px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      }
+
+      @media (min-width: 480px) {
+        .card {
+          padding: 22px;
+        }
+      }
+
+      h1 {
+        margin: 6px 0 14px;
+        text-align: center;
+        font-weight: 800;
+        font-size: clamp(24px, 7vw, 36px);
+        line-height: 1.2;
+        color: #b8ff66;
+      }
+
+      .sub {
+        margin: 0 0 16px;
+        text-align: center;
+        font-size: clamp(16px, 4.5vw, 18px);
+        color: #a7c0d2;
+      }
+
+      .progress {
+        height: 18px;
+        background: #0d1824;
+        border: 1px solid #0e2434;
+        border-radius: 999px;
+        overflow: hidden;
+        margin: 12px 0;
+      }
+
+      .bar {
+        height: 100%;
+        width: 0;
+        background: #22c55e;
+        transition: width 0.25s ease;
+      }
+
+      .step {
+        font-size: clamp(15px, 4vw, 18px);
+        color: #a7c0d2;
+        margin-bottom: 10px;
+        text-align: right;
+      }
+
+      .q {
+        display: none;
+      }
+
+      .q.active {
+        display: block;
+      }
+
+      .question {
+        font-size: clamp(20px, 5vw, 26px);
+        font-weight: 800;
+        margin: 12px 0 10px;
+        color: #ecf7ff;
+      }
+
+      .option {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        background: #eafff2;
+        border: 2px solid #22c55e;
+        border-left: 10px solid #22c55e;
+        color: #062612;
+        border-radius: 14px;
+        padding: 18px 16px;
+        font-size: clamp(18px, 4.8vw, 22px);
+        margin: 14px 0;
+        cursor: pointer;
+        -webkit-tap-highlight-color: transparent;
+        box-shadow: 0 4px 12px rgba(34, 197, 94, 0.18);
+      }
+
+      .option:hover,
+      .option:focus-within {
+        background: #d7ffe7;
+        border-color: #16a34a;
+        border-left-color: #16a34a;
+      }
+
+      .option input {
+        display: none;
+      }
+
+      .cta {
+        text-align: center;
+        margin-top: 16px;
+        display: none;
+      }
+
+      .cta h2 {
+        font-size: clamp(22px, 5.5vw, 28px);
+        margin: 10px 0 12px;
+        font-weight: 800;
+        color: #baffc8;
+      }
+
+      .btn {
+        display: inline-block;
+        width: 100%;
+        max-width: 520px;
+        background: #22c55e;
+        color: #03160a;
+        text-decoration: none;
+        padding: 22px 32px;
+        border-radius: 16px;
+        font-size: clamp(20px, 5.5vw, 26px);
+        font-weight: 900;
+        border: 2px solid #15803d;
+        box-shadow: 0 8px 22px rgba(34, 197, 94, 0.35);
+        touch-action: manipulation;
+      }
+
+      .btn:hover {
+        background: #34d399;
+      }
+
+      .tiny {
+        font-size: clamp(13px, 3.8vw, 14px);
+        color: #a7c0d2;
+        margin-top: 12px;
+      }
+
+      .processing {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        background: rgba(6, 12, 20, 0.96);
+        align-items: center;
+        justify-content: center;
+        padding: 16px;
+      }
+
+      @media (max-width: 640px) {
+        .processing {
+          align-items: flex-start;
+          justify-content: center;
+          padding-top: calc(10vh + env(safe-area-inset-top));
+        }
+      }
+
+      .proc-box {
+        width: min(560px, 94vw);
+        background: #0e1b2a;
+        border: 1px solid #16304a;
+        border-radius: 16px;
+        padding: 20px;
+        color: #ecf7ff;
+        text-align: center;
+      }
+
+      .proc-title {
+        margin: 0 0 10px;
+        font-size: clamp(20px, 5vw, 24px);
+        font-weight: 800;
+      }
+
+      .loader {
+        height: 12px;
+        background: #0b1a29;
+        border: 1px solid #132a3f;
+        border-radius: 999px;
+        overflow: hidden;
+        margin: 12px 0;
+      }
+
+      .fill {
+        height: 100%;
+        width: 0;
+        background: #22c55e;
+        transition: width 0.22s linear;
+      }
+
+      .prow {
+        color: #b1c6da;
+        font-size: clamp(16px, 4.2vw, 18px);
+        margin: 6px 0;
+      }
+
+      :focus-visible {
+        outline: 3px solid #86efac;
+        outline-offset: 3px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="wrap">
+      <div class="card" role="form" aria-labelledby="quiz-title">
+        <h1 id="quiz-title">
+          Discover the 7-Minute Method That Turns Any Phone Into a Mobile Money
+          Machine
+        </h1>
+
+        <div class="progress" aria-hidden="true">
+          <div class="bar" id="bar"></div>
+        </div>
+
+        <div class="step" id="step">Question 1 of 5</div>
+
+        <div id="qbox">
+          <div class="q active">
+            <div class="question">
+              How do you usually use your phone during the day?
+            </div>
+            <label class="option">
+              <input type="radio" name="q1" />Mostly social media scrolling
+            </label>
+            <label class="option">
+              <input type="radio" name="q1" />Texting and calls
+            </label>
+            <label class="option">
+              <input type="radio" name="q1" />Watching videos or content
+            </label>
+            <label class="option">
+              <input type="radio" name="q1" />A mix of everything
+            </label>
+          </div>
+
+          <div class="q">
+            <div class="question">
+              If your phone could do one more thing for you, what would it be?
+            </div>
+            <label class="option">
+              <input type="radio" name="q2" />Help cover extra expenses
+            </label>
+            <label class="option">
+              <input type="radio" name="q2" />Give me more free time
+            </label>
+            <label class="option">
+              <input type="radio" name="q2" />Create a little financial breathing
+              room
+            </label>
+            <label class="option">
+              <input type="radio" name="q2" />I’m just curious what this is about
+            </label>
+          </div>
+
+          <div class="q">
+            <div class="question">
+              Have you ever tried to earn income online before?
+            </div>
+            <label class="option">
+              <input type="radio" name="q3" />Yes, but it didn’t work out
+            </label>
+            <label class="option">
+              <input type="radio" name="q3" />No, but I’ve seen people do it
+            </label>
+            <label class="option">
+              <input type="radio" name="q3" />Never — I wouldn’t know where to
+              start
+            </label>
+          </div>
+
+          <div class="q">
+            <div class="question">
+              How comfortable are you trying something new on your phone?
+            </div>
+            <label class="option">
+              <input type="radio" name="q4" />Very comfortable
+            </label>
+            <label class="option">
+              <input type="radio" name="q4" />Somewhat comfortable
+            </label>
+            <label class="option">
+              <input type="radio" name="q4" />I can follow simple directions
+            </label>
+            <label class="option">
+              <input type="radio" name="q4" />I’m not great with tech
+            </label>
+          </div>
+
+          <div class="q">
+            <div class="question">
+              If this phone trick actually worked for you, what would it help
+              most with?
+            </div>
+            <label class="option">
+              <input type="radio" name="q5" />Covering bills or groceries
+            </label>
+            <label class="option">
+              <input type="radio" name="q5" />Helping family / holiday gifts
+            </label>
+            <label class="option">
+              <input type="radio" name="q5" />Paying down debt
+            </label>
+            <label class="option">
+              <input type="radio" name="q5" />Just having less financial stress
+            </label>
+          </div>
+        </div>
+
+        <div class="cta" id="cta" aria-live="polite">
+          <h2>✅ Your phone checks out — watch the 7-minute walkthrough next</h2>
+
+          <!-- ✅ Default link; JS will append fbclid if present -->
+          <a
+            class="btn"
+            id="finalCta"
+            href="https://mobileprofits.co/reveal/?aff=MARKETSX"
+            rel="nofollow noopener"
+          >
+            ▶️ Continue to Video
+          </a>
+
+        
+        </div>
+      </div>
+    </div>
+
+    <!-- Processing Overlay -->
+    <div class="processing" id="processing" role="dialog" aria-modal="true">
+      <div class="proc-box">
+        <h3 class="proc-title">Analyzing your answers…</h3>
+        <div class="loader">
+          <div class="fill" id="pf"></div>
+        </div>
+        <div class="prow">Checking your phone’s compatibility…</div>
+        <div class="prow">Matching with available system access…</div>
+        <div class="prow">Finalizing…</div>
+      </div>
+    </div>
+
+  <script>
+  (function () {
+    // =========================
+    // 1) FBCLID PASSTHROUGH (with placeholder/bad-value protection)
+    // =========================
+    const urlParams = new URLSearchParams(window.location.search);
+   let fbclid = (urlParams.get("fbclid") || "").trim();
+
+
+    // ✅ Ignore fake placeholders like ?fbclid=fbclid or template tokens
+    if (
+      !fbclid ||
+      fbclid.toLowerCase() === "fbclid" ||
+      fbclid.includes("{") ||
+      fbclid.includes("}") ||
+      fbclid.includes("{{") ||
+      fbclid.includes("}}") ||
+      fbclid.length < 8
+    ) {
+      fbclid = null;
+    }
+
+    let finalLink = "https://mobileprofits.co/reveal/?aff=MARKETSX";
+    if (fbclid) {
+      finalLink += "&fbclid=" + encodeURIComponent(fbclid);
+    }
+
+    const finalCta = document.getElementById("finalCta");
+    if (finalCta) finalCta.href = finalLink;
+
+    // Optional: Track CTA click (safe)
+    if (finalCta) {
+      finalCta.addEventListener("click", function () {
+        try {
+          if (typeof fbq === "function") {
+            fbq("track", "ViewContent");
+          }
+        } catch (_) {}
+      });
+    }
+
+    // =========================
+    // 2) QUIZ FLOW (SAFE + SIMPLE)
+    // =========================
+    const qbox = document.getElementById("qbox");
+    const qs = Array.from(qbox.querySelectorAll(".q"));
+    const total = qs.length;
+
+    const bar = document.getElementById("bar");
+    const step = document.getElementById("step");
+    const cta = document.getElementById("cta");
+
+    const overlay = document.getElementById("processing");
+    const fill = document.getElementById("pf");
+
+    let i = 0;
+    let last = 0;
+    let busy = false;
+
+    function setProgress(n) {
+      const pct = Math.round(((n + 1) / total) * 100);
+      bar.style.width = Math.max(10, pct) + "%";
+      step.textContent = "Question " + (n + 1) + " of " + total;
+    }
+
+    setProgress(0);
+
+    function goNext() {
+      if (qs[i]) qs[i].classList.remove("active");
+      i++;
+
+      if (i < total) {
+        qs[i].classList.add("active");
+        setProgress(i);
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        startProcessing();
+      }
+    }
+
+    function onceAdvance() {
+      const now = Date.now();
+      if (busy || now - last < 160) return;
+      busy = true;
+      last = now;
+
+      setTimeout(() => {
+        goNext();
+        busy = false;
+      }, 60);
+    }
+
+    qbox.addEventListener("click", (e) => {
+      const opt = e.target.closest(".option");
+      if (!opt) return;
+
+      const input = opt.querySelector('input[type="radio"]');
+      if (input) input.checked = true;
+
+      onceAdvance();
+    });
+
+    qbox.addEventListener("change", (e) => {
+      if (e.target && e.target.type === "radio") onceAdvance();
+    });
+
+    function startProcessing() {
+      qbox.style.display = "none";
+      step.textContent = "Processing";
+      bar.style.width = "100%";
+
+      overlay.style.display = "flex";
+
+      let pct = 0;
+      const targets = [35, 70, 100];
+      let k = 0;
+
+      const timer = setInterval(() => {
+        pct += (targets[k] - pct) * 0.28;
+        fill.style.width = pct + "%";
+
+        if (Math.abs(pct - targets[k]) < 1) {
+          pct = targets[k];
+          k++;
+        }
+
+        if (k >= targets.length) {
+          clearInterval(timer);
+          setTimeout(showResults, 350);
+        }
+      }, 170);
+    }
+
+    function showResults() {
+      overlay.style.display = "none";
+      cta.style.display = "block";
+      finalCta && finalCta.focus();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  })();
+</script>
+
+  </body>
+</html>
