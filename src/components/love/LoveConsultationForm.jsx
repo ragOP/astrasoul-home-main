@@ -80,7 +80,7 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
               type="tel"
               value={formData.phoneNumber || ""}
               onChange={(e) => handleInputChange("phoneNumber", e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
+              className="w-full px-4 py-3 border text-black border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
               placeholder="Enter your phone number"
               required
             />
@@ -96,7 +96,7 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
               type="date"
               value={formData.dateOfBirth || ""}
               onChange={(e) => handleInputChange("dateOfBirth", e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
+              className="w-full px-4 text-black py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
               required
             />
           </div>
@@ -111,7 +111,7 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
               type="text"
               value={formData.placeOfBirth || ""}
               onChange={(e) => handleInputChange("placeOfBirth", e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
+              className="w-full text-black px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
               placeholder="Enter your birth place"
               required
             />
@@ -126,7 +126,7 @@ const LoveConsultationForm = ({ formData, setFormData, onSubmit }) => {
             <select
               value={formData.gender || ""}
               onChange={(e) => handleInputChange("gender", e.target.value)}
-              className="w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
+              className=" text-black w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-rose-500 focus:border-transparent love-font-inter"
               required
             >
               <option value="">Select gender</option>
