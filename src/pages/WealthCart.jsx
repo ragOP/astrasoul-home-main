@@ -200,7 +200,7 @@ function WealthCart() {
         order_id: data.orderId,
         handler: async function (response) {
           try {
-            await axios.post(`${BACKEND_URL}/api/lander1/create-order`, {
+            await axios.post(`${BACKEND_URL}/api/lander111/create-order`, {
               amount: total,
               razorpayOrderId: response.razorpay_order_id,
               razorpayPaymentId: response.razorpay_payment_id,
@@ -216,7 +216,7 @@ function WealthCart() {
               additionalProducts: additionalProducts,
             });
             
-            navigate("/order-confirmation", {
+            navigate("/order-confirmationwealth", {
               state: {
                 orderId: data.orderId,
                 amount: total,
