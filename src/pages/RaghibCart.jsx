@@ -17,7 +17,7 @@ function Cart() {
  const [cartItems, setCartItems] = useState([
   {
     id: 1,
-    name: "Love & Money Attractor Bracelet",
+    name: "Love & Money Attractor Bracelets",
     description:
       "Astrologer-charged bracelet crafted with Rose Quartz & Pyrite to attract love, harmony, wealth, and financial opportunities.",
     price: 2,
@@ -29,7 +29,7 @@ function Cart() {
       "Pre-charged 10× by expert astrologer",
       "FREE Digital Love & Wealth Report (Worth ₹2000)",
     ],
-    image: "src/assets/hero.png", // replace with your actual bracelet image path
+    image: "./src/assets/hero.png", // replace with your actual bracelet image path
   },
 ]);
 
