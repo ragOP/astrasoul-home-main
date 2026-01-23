@@ -597,7 +597,7 @@ const Raghib = () => {
                     className="text-yellow-400 text-5xl font-black leading-tight mb-4 drop-shadow-[0_0_30px_rgba(250,204,21,0.5)]"
                     style={{ fontFamily: "'Poppins', sans-serif" }}
                   >
-                    ₹799
+                    ₹499
                   </p>
                   <button
                     onClick={() => navigate("/bracelet-cart")}

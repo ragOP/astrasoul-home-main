@@ -61,7 +61,7 @@ const OrderConfirmationBracelet = () => {
             </h1>
             
             <p className="text-lg sm:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
-              Your consultation has been successfully booked. Our expert astrologer will contact you within 24 hours to schedule your personalized session.
+              Your order has been successfully booked. Our team will deliver your bracelet within few days.
             </p>
           </div>
 
@@ -88,7 +88,7 @@ const OrderConfirmationBracelet = () => {
                   </div>
                   <div className="space-y-2">
                     <p className="text-white/60 text-sm">Service</p>
-                    <p className="text-white">Premium Astro Consultation</p>
+                    <p className="text-white">Love & Money Attractor Bracelets</p>
                   </div>
                   <div className="space-y-2">
                     <p className="text-white/60 text-sm">Amount Paid</p>
@@ -166,7 +166,7 @@ const OrderConfirmationBracelet = () => {
           <div className="text-center space-y-4 pt-8 border-t border-white/10">
             <p className="text-white/60 text-sm">
               Need immediate assistance? Contact us at{' '}
-              <span className="text-amber-400 font-medium">support@easysoul.com</span>
+              <span className="text-amber-400 font-medium">support@astrasoul.digital</span>
             </p>
             <p className="text-white/40 text-xs">
               You will receive a confirmation email shortly with all the details.

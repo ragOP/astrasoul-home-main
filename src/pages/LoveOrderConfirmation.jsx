@@ -171,7 +171,7 @@ const LoveOrderConfirmation = () => {
           <div className="text-center space-y-4 pt-8 border-t border-white/30">
             <p className="text-gray-600 text-sm love-font-poppins">
               Need immediate assistance? Contact us at{' '}
-              <span className="text-rose-600 font-medium">support@easysoul.com</span>
+              <span className="text-rose-600 font-medium">support@astrasoul.digital</span>
             </p>
             <p className="text-gray-500 text-xs love-font-poppins">
               You will receive a confirmation email shortly with all the details.

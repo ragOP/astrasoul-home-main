@@ -179,7 +179,7 @@ const KundliConfirmation = () => {
             <p className="text-white/60 text-sm">
               Need help? Contact us at{' '}
               <span className="text-amber-400 font-medium">
-                support@easysoul.com
+                support@astrasoul.digital
               </span>
             </p>
             <p className="text-white/40 text-xs">

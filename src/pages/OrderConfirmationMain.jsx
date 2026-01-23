@@ -166,7 +166,7 @@ const OrderConfirmation = () => {
           <div className="text-center space-y-4 pt-8 border-t border-white/10">
             <p className="text-white/60 text-sm">
               Need immediate assistance? Contact us at{' '}
-              <span className="text-amber-400 font-medium">support@easysoul.com</span>
+              <span className="text-amber-400 font-medium">support@astrasoul.digital</span>
             </p>
             <p className="text-white/40 text-xs">
               You will receive a confirmation email shortly with all the details.
