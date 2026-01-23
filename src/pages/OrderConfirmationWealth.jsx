@@ -61,7 +61,7 @@ const OrderConfirmation = () => {
             </h1>
             
             <p className="text-lg sm:text-xl text-white/80 leading-relaxed max-w-2xl mx-auto">
-              Your consultation has been successfully booked. Our expert astrologer will contact you within 24 hours to schedule your personalized session.
+              Your order has been successfully placed. We are excited to help you on your astrological journey!
             </p>
           </div>
 
@@ -88,7 +88,7 @@ const OrderConfirmation = () => {
                   </div>
                   <div className="space-y-2">
                     <p className="text-white/60 text-sm">Service</p>
-                    <p className="text-white">Premium Astro Consultation</p>
+                    <p className="text-white">Wealth Report</p>
                   </div>
                   <div className="space-y-2">
                     <p className="text-white/60 text-sm">Amount Paid</p>
